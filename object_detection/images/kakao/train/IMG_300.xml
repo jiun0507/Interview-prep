@@ -1,0 +1,26 @@
+<annotation>
+	<folder>drive-download-20190627T060537Z-001</folder>
+	<filename>IMG_300.jpg</filename>
+	<path>C:\Users\MRLab\Downloads\drive-download-20190627T060537Z-001\IMG_300.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>1080</width>
+		<height>716</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>neo</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>138</xmin>
+			<ymin>316</ymin>
+			<xmax>434</xmax>
+			<ymax>559</ymax>
+		</bndbox>
+	</object>
+</annotation>
