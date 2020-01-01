@@ -1,4 +1,4 @@
-#baekjoon 17103 goldbach partition question
+//baekjoon 17103 goldbach partition question
 #include <iostream>
 using namespace std;
 
@@ -19,7 +19,7 @@ int main() {
 			max = x;
 		}
 	}
-	int check[max+1] = {0};
+	int check[1000001] = {0};//check size up to you.(arbitrary)
 	for(int i=2;i<=max;i++){
 		if(check[i]==0){
 			ans[plength++]=i;
