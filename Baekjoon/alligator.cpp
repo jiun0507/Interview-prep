@@ -57,6 +57,39 @@ void alli(vector<int> &numbers){
 	return;
 }
 
+//back tracking method. Checks everytime whether the number that will be added satisfy the 부등호.
+bool valid2(int left, int right, char c){
+	
+	if(c == '<' && left < right) return true;
+	if(c == '>' && left > right) return true;
+	return false;
+}
+
+void alli2(vector<int> &numbers){
+	int length = numbers.size();
+	if(length == n+1){
+		if(big < numbers){
+			big = numbers;
+		}
+		if(small > numbers){
+			small = numbers;
+		}
+		return;
+	}
+	for(int i = 0;i<10;i++){
+		if(check[i] == 1) continue;
+		if(length == 0 || valid2(numbers[length-1], i, alligator[length-1])){
+			check[i] = 1;
+			numbers.push_back(i);
+			alli(numbers);
+			numbers.pop_back();
+			check[i] = 0;
+		}
+	}
+	
+	return;
+}
+
 int main() {
 	cin>>n;
 	for(int i = 0;i<n;i++){
