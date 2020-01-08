@@ -1,3 +1,5 @@
+//baekjoon9613
+//gcd 합
 #include <iostream>
 
 using namespace std;

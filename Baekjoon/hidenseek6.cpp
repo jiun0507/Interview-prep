@@ -1,3 +1,5 @@
+//baekjoon 17087
+//hide and seek 6
 #include <iostream>
 #include <algorithm>
 using namespace std;
