@@ -1,4 +1,4 @@
 # Interview-prep
-Study for interviews and Propose!
+Study for interview
 
 LEt's get it get it get it.
