@@ -1,5 +1,5 @@
 //baekjoon 2667
-//
+//단지번호 붙이기
 //DFS and BFS given nodes in the form of 2D array
 
 #include <iostream>
@@ -11,9 +11,13 @@
 using namespace std;
 
 int n;
+
 int check[25][25];
 int houses[25][25];
 pair<int,int> direction[4] = {{1,0},{0,1},{-1,0},{0,-1}};
+int dx[] = {0,0,1,-1};
+int dy[] = {1,-1,0,0};
+//two ways of storing directions
 
 void DFSlist(int y, int x, int groupID){
 	check[y][x] = groupID;
