@@ -15,6 +15,13 @@ int check[100010];
 int cnt[100010];
 int backtrace[100010];
 
+//better way(recursively)
+void print(int n, int m){
+    if(n != m){
+        print(n, backtrace[m]);
+    }
+    print<<m<<" ";
+}
 int BFSlist(int index){
 	queue<int> q;
 	q.push(index);
