@@ -31,12 +31,11 @@ void go2(int index, int selected, int n , int m){
 	if(index>n){
 		return;
 	}
-	for(int i = m-selected; i>=1; i--){
+	for(int i = m-selected; i>=0; i--){
 		cnt[index] = i;
 		go2(index+1, selected +i, n,m);
 	}
-	cnt[index] = 0;
-	go2(index + 1, selected, n, m);
+
 	
 }
 
@@ -44,6 +43,6 @@ int main() {
 	int n, m;
 	cin >> n>>m;
 	go(0, 1, n, m);
-
+	go2(1, 0,n, m);
 	return 0;
 }
