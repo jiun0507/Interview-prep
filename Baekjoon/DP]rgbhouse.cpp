@@ -1,4 +1,5 @@
 //baekjoon onetwothree 1149
+//DP forloop from the bottom
 //least price to paint n houses with rgb with given prices for painting
 //rgb for ith house
 #include <iostream>
@@ -11,19 +12,13 @@ int color[1001][4];
 //the least money spent is price[n][i] = color[i] + min(price[n-1][i-1],price[n-1][i+1]);
 
 
-void paint(int n, int rgb){
-	for(int j = 1;j<=3;j++){
+void paint(int n){
+	for(int j = 0;j<3;j++){
 		price[0][j] = color[0][j];
 	}
-	for(int i = 1;i<=n;i++){
-		for(int j = 1;j<=3;j++){
-			int min = 2100000000;
-			for(int k = 1;k<=3;k++){
-				if(j != k && min>price[i-1][k]){
-					min = price[i-1][k];
-				}
-			}
-			price[i][j] = color[i][j] + min;
+	for(int i = 1;i<n;i++){
+		for(int j = 0;j<3;j++){
+			price[i][j] = color[i][j] + min(price[i-1][(j+1)%3],price[i-1][(j+2)%3]);
 		}
 	}
 	return ;
@@ -35,15 +30,15 @@ int main() {
 	int n;
 	cin>>n;
 	for(int i =0;i<n;i++){
-		for(int j = 1;j<=3;j++){ 
+		for(int j = 0;j<3;j++){ 
 			cin>>color[i][j];
 		}
 	}
-	paint(n, 0);
+	paint(n);
 	int min = 2100000000;
-	for(int i = 1;i<=3;i++){
-		if(min>price[n][i]){
-			min = price[n][i];
+	for(int i = 0;i<3;i++){
+		if(min>price[n-1][i]){
+			min = price[n-1][i];
 		}
 	}
 	cout<<min<<"\n";

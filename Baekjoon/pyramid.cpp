@@ -1,5 +1,6 @@
 //baekjoon onetwothree 1932
-//pyramids
+//DP
+//점화식 D[i][j] = number[i][j] + max(D[i-1][j-1], D[i-1][j])
 #include <iostream>
 #include <algorithm>
 using namespace std;
