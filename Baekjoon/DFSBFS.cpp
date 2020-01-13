@@ -16,6 +16,7 @@ vector<int> connection2[1001];
 vector<pair<int,int>> connection3;
 int check[1001];
 int cnt[1001];
+
 void DFSlist(int index){
 	check[index] = 1;
 	cout<<index<<" ";

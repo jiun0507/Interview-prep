@@ -13,10 +13,10 @@ int color[1001][4];
 
 void paint(int n){
 	
-	for(int i = 1;i<n;i++){
-		price[i][1] = color[i][1] + min(price[i-1][2],price[i-1][3]);
-		price[i][2] = color[i][2] + min(price[i-1][1],price[i-1][3]);
-		price[i][3] = color[i][3] + min(price[i-1][1],price[i-1][2]);
+	for(int i = 1;i<=n;i++){
+		for(int j = 0;j<3;j++){
+			price[i][j] = color[i][j] + min(price[i-1][(j+1)%3],price[i-1][(j+2)%3]);
+		}
 	}
 	return ;
 }
@@ -27,15 +27,16 @@ int main() {
 	int n;
 	cin>>n;
 	for(int i =0;i<n;i++){
-		for(int j = 1;j<=3;j++){ 
+		for(int j = 0;j<3;j++){ 
 			cin>>color[i][j];
 		}
 	}
 	
 		
 	int minim = 1000000;
-	for(int i = 1; i<=3; i++){
-		for(int j = 1;j<=3;j++){
+	//i is the color of the first house
+	for(int i = 0; i<3; i++){
+		for(int j = 0;j<3;j++){
 			if(i == j){
 				price[0][j] = color[0][j];
 			}
@@ -43,11 +44,8 @@ int main() {
 				price[0][j] = 1001*1001;
 			}
 		}
-		paint(n);
-		if(i==1) minim = min(minim, min(price[n-1][2], price[n-1][3]));
-		else if(i==2) minim = min(minim, min(price[n-1][1], price[n-1][3]));
-		else if(i==3) minim = min(minim, min(price[n-1][1], price[n-1][2]));
-		
+		paint(n-1);
+		minim = min(minim, min(price[n-1][(i+1)%3], price[n-1][(i+2)%3]));
 	}
 	cout<<minim<<"\n";
 	return 0;

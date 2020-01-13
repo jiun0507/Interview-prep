@@ -1,5 +1,5 @@
 //baekjoon 14889
-
+//스타트와 링크 축구경기
 #include <iostream>
 #include <vector>
 #include <algorithm>

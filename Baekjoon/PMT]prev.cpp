@@ -1,4 +1,6 @@
 //baekjoon 10973
+//이전순열
+
 #include <iostream>
 #include <algorithm>
 #include <vector>

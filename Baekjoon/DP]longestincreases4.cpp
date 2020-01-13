@@ -1,4 +1,5 @@
 //baekjoon 14002
+//DP using for loop(bottom-up)
 //backtracking added to lis question
 #include <iostream>
 

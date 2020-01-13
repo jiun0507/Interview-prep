@@ -1,5 +1,5 @@
 //baekjoon 14500
-//tetromia
+//tetromia DP
 #include <iostream>
 using namespace std;
 int a[500][500];

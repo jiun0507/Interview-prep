@@ -2,6 +2,7 @@
 //DFS to find the circle. BFS to find the distance between subways
 //DFS and BFS implemented using edge list(count array) and linked list(vector)
 
+//continue; takes a long time -> try not to use it.
 #include <iostream>
 #include <vector>
 #include <queue>

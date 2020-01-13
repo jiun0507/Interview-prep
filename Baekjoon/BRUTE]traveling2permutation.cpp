@@ -1,5 +1,6 @@
 //baekjoon 10971
 //외판원 순회 2
+//permutation (brute force)
 #include <cstdio>
 #include <vector>
 #include <algorithm>
