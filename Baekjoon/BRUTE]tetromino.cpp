@@ -33,6 +33,24 @@ int go(int sum, int y, int x, int cnt){
 	check[y][x] = 0;
 	return ans;
 }
+int goV2(int sum, int y, int x, int cnt){
+	if(cnt == 4){
+		return sum;
+	}
+	if(y < 0 || y==n || x<0 || x==m || check[y][x] == 1){
+		return 0;
+	}
+	check[y][x] = 1;
+	int ans = 0;
+	for(int i = 0;i<4;i++){
+		int y2 = y + newy[i];
+		int x2 = x + newx[i];
+		int temp = go(sum + blocks[y][x], y2, x2, cnt + 1);
+		if(ans<temp) ans = temp;
+	}
+	check[y][x] = 0;
+	return ans;
+}
 
 //takes care of T shapes(is not covered by go recursion function)
 int go2(int y, int x){
