@@ -1,5 +1,7 @@
 //baekjoon 1182
 //부분 집합의 합
+
+//using bitmask
 #include <iostream>
 using namespace std;
 int a[20];
