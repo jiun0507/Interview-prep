@@ -1,0 +1,34 @@
+//baekjoon 16198
+
+#include <iostream>
+#include <vector>
+using namespace std;
+int n;
+int maxi = 0;
+
+void go(vector<int> &a, int sum){
+	if(a.size() == 2){
+		if(maxi<sum) maxi = sum;
+		return;
+	}
+	int ans = 0;
+	for(int i = 1;i<a.size()-1;i++){
+		int add = a[i-1] * a[i+1];
+		vector<int> b(a);
+		b.erase(b.begin() + i);
+		go(b, sum + add);
+	}
+	
+	return;
+}
+
+int main() {
+	cin>>n;
+	vector<int> a(n);
+	for(int i = 0;i<n;i++){
+		cin>>a[i];
+	}
+	go(a, 0);
+	cout<<maxi<<"\n";
+	return 0;
+}
