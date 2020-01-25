@@ -1,6 +1,7 @@
 //baekjoon 6603
 
 //recursively permute through all possible cases
+//input is increasing order + order of recursion ->  automatically 사전순
 #include <iostream>
 #include <string>
 #include <vector>

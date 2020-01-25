@@ -7,6 +7,7 @@ using namespace std;
 int result2[10];
 int check[10];
 int input[10];
+int result[10];
 void go(int index, int start, int n, int m){
 	if(index == m){
 		for(int i = 0; i<m ; i++){
