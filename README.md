@@ -1,4 +1,4 @@
 # Interview-prep
-Study for interview
+My solutions to algorithm questions from 
+https://www.acmicpc.net/.
 
-LEt's get it get it get it.
