@@ -1,4 +1,5 @@
 //baekjoon 13460
+//marble escape
 
 #include <iostream>
 #include <string>
@@ -13,95 +14,97 @@ int newx[4] = {0, 0, 1, -1};
 int newy[4] = {1, -1, 0, 0};
 int block[25][25] = {0};
 bool found = false;
-bool check_range(int y, int x){
-	return y>=0 && y<n && x>=0 && x<m;
+
+
+//in the hole = 1
+//blocked = 2
+//moved = 0
+int simulate(int dir, int &y, int &x){
+	int moved = 2;
+	while(true){
+		int ny = y + newy[dir];
+		int nx = x + newx[dir];
+		int next = block[ny][nx];
+		if(next == 2){
+			return moved;
+		}
+		if(next == 3 || next == 4){
+			return moved;
+		}
+
+		if(next == 1){
+			block[y][x] = 0;
+			// cout<<y<<" "<<x<<"\n";
+			return 1;	
+		} 
+		moved = 0;
+		//swap
+		swap(block[ny][nx], block[y][x]);
+		y = ny;
+		x = nx;		
+	}
+	return 5;
+	
 }
-void go(int click, int yr, int xr, int yb, int xb){
-	if(click>10) return;
-	// if(yr == yb && xr == xb) return;
+int go(int click, int yr, int xr, int yb, int xb, int dir){
+	if(click>10) return 11;
+	// cout<<"click : "<< click<<"\n";
+	// for(int i = 0;i<n;i++){
+	// 	for(int j =0;j<m;j++){
+	// 		cout<<block[i][j]<<" ";
+	// 	}
+	// 	cout<<"\n";
+	// }
+	// cout<<"\n";
+	int ans = 11;
 	for(int i = 0;i<4;i++){
-		bool blockr = true;
-		bool blockb = true;
+		if(dir != -1){
+			// if(dir == i) continue;
+			if(newy[dir] == newy[i] || newx[dir] == newx[i]) continue;
+		}
 		int newyr = yr;
 		int newxr = xr;
 		int newyb = yb;
 		int newxb = xb;
-		while(blockr||blockb){
-			if(blockr && block[newyr][newxr] != 2){
-				newyr += newy[i];
-				newxr += newx[i];
+		bool blockr = false;
+		bool blockb = false;
+		bool red = false;
+		bool blue = false;
+		while(true){
+			int r = simulate(i, newyr, newxr);
+			int b = simulate(i, newyb, newxb);
+			if(r==2 && b==2){
+				break;
 			}
-			else{
-				blockr = false;
+			if(b == 1){
+				blue = true;
+				break;
 			}
-			if(blockb && block[newyb][newxb] != 2){
-				newyb += newy[i];
-				newxb += newx[i];
+			if(r == 1){
+				red = true;
+				break;
 			}
-			else{
-				blockb = false;
-			}
+		}
+		if(blue) continue;
+		if(red){
+			return click+1;	
+		}
+		if(newyr == yr && newxr == xr ){
+			continue;
+		}
+		// cout<<newyr<<" "<<newxr<<" "<<newyb<<" "<<newxb<<"\n";
+		int temp = go(click + 1, newyr, newxr, newyb, newxb, i);
+		if(ans > temp) ans = temp;
 			
-			if(newyr=newyb && newxr==newxb){
-				if(!blockr){
-					newyb -= newy[i];
-					newxb -= newx[i];
-					
-				}
-				else if(!blockb){
-					newyr -= newy[i];
-					newxr -= newx[i];
-				}
-			}
-		}
-		while(blockr || blockb){
-			newyr += newy[i];
-			newxr += newx[i];
-			newyb += newy[i];
-			newxb += newx[i];
-			if(!blockr||block[newyr][newxr] == 2){
-				newyr -= newy[i];
-				newxr -= newx[i];
-				blockr = false;
-			}
-			if(!blockb || block[newyb][newxb] == 2){
-				newyb -= newy[i];
-				newxb -= newx[i];
-				blockb = false;
-			}
-			if(newyr=newyb && newxr==newxb){
-				if(!blockr){
-					newyb -= newy[i];
-					newxb -= newx[i];
-					
-				}
-				else if(!blockb){
-					newyr -= newy[i];
-					newxr -= newx[i];
-				}
-			}
-			if(block[newyr][newxr] == 1){
-				if(click<mini){ 
-					mini = click;
-				}
-				found = true;
-				return;
-			}
-			if(block[newyb][newxb] == 1){
-				return;
-			}
-		}
-		cout<<newyr<<" "<<newxr<<"\n";
-		go(click + 1, newyr, newxr, newyb, newxb);
+		
 	}
-	return;
+	return ans;
 }
 
 
 int main() {
 	cin>>n>>m;
 	cin.ignore();
-	int ans = 0;
 	int yr, xr, yb,xb;
 	int holey, holex;
 	vector<pair<int,int>> coin;
@@ -129,19 +132,21 @@ int main() {
 			else if(c == '.') block[i][k] = 0;				
 		}
 	}
-	for(int i = 0;i<n;i++){
-		for(int j =0;j<m;j++){
-			cout<<block[i][j]<<" ";
-		}
-		cout<<"\n";
-	}
-	cout<<yr<<" "<<xr<<" "<<yb<<" "<<xb<<"\n";
-	go(0, yr, xr, yb, xb);
-	if(found == false){
-		cout<<"-1"<<"\n";
+	// for(int i = 0;i<n;i++){
+	// 	for(int j =0;j<m;j++){
+	// 		cout<<block[i][j]<<" ";
+	// 	}
+	// 	cout<<"\n";
+	// }
+	
+	// cout<<yr<<" "<<xr<<" "<<yb<<" "<<xb<<"\n";
+	int ans = go(0, yr, xr, yb, xb, -1);
+	if(ans== 11){
+		cout<<-1<<"\n";
 	}
 	else{
-		cout<<mini<<"\n";
+		cout<<ans<<"\n";		
 	}
+
     return 0;
 }
