@@ -1,5 +1,5 @@
-//baekjoon 12100
-//easy
+//baekjoon 13460
+//marble escape
 
 #include <iostream>
 #include <string>
@@ -24,9 +24,6 @@ vector<int> generate(int k){
 	}
 	return mask;
 }
-//in the hole = 1
-//blocked = 2
-//moved = 0
 bool check_range(int y, int x){
 	return y>=0 && y<n && x>=0 && x<n;
 }
@@ -36,25 +33,33 @@ bool simulate(vector<vector<pair<int,bool>>> &b, int dir){
 	bool moved = false;
 	for(int i = 0; i<n;i++){
 		for(int j = 0;j<n;j++){
+			if(b[i][j].first == 0) continue;
 			bool blocked = false;
 			bool merge = false;
 			while(!blocked){
 				int cur = b[i][j].first;
-				if(cur == 0) continue;
 				int ni = i + dy;
 				int nj = j + dx;
+				// cout<<i<<" "<<j<<"\n";
+				// cout<<ni<<" "<<nj<<"\n";
 				if(!check_range(ni, nj)){
-					cout<<"checked"<<"\n";
 					break;	
 				} 
+				
 				int next = b[ni][nj].first;
 				if(next == cur){
-					b[ni][nj].first *= 2;
-					b[i][j].first = 0;
-					blocked = true;
-					moved = true;
+					if(b[ni][nj].second || b[i][j].second){
+						blocked = true;
+					}
+					else{
+						b[ni][nj].first *= 2;
+						b[i][j].first = 0;
+						b[ni][nj].second = true;
+						blocked = true;
+						moved = true;
+					}
 				}
-				if(next == 0){
+				else if(next == 0){
 					int temp = b[ni][nj].first;
 					b[ni][nj].first = b[i][j].first;
 					b[i][j].first = temp;
@@ -62,7 +67,7 @@ bool simulate(vector<vector<pair<int,bool>>> &b, int dir){
 					blocked = true;
 					moved = true;
 				}
-				if(next != cur){
+				else if(next != cur){
 					blocked = true;
 				}
 			}
@@ -113,10 +118,10 @@ int main() {
 			newblock[i][j].first = blocks[i][j];
 		}
 	}
-	cout<<simulate(newblock, 2)<<"\n";
+	cout<<simulate(newblock, 3)<<"\n";
 	for(int i = 0;i<n;i++){
 		for(int j = 0;j<n;j++){
-			cout<<blocks[i][j]<<" ";
+			cout<<newblock[i][j].first<<" ";
 		}
 		cout<<"\n";
 	}	
