@@ -1,130 +1,106 @@
-// Example program
 #include <iostream>
-#include <vector>
-#include <queue>
-#include <tuple> 
-#include <string>
+#include <tuple>
 #include <algorithm>
+#include <cstring>
+#include <queue>
+#include <string>
 using namespace std;
-
+int water[50][50];
+int d[50][50];
 int n,m;
-int check[50][50][50];
-vector<vector<int>> blocks[100];
-
-int dy[4] = {-1, 1, 0, 0};
-int dx[4] = {0, 0, -1, 1};
-int cnt;
-int cavey,cavex;
+int dx[] = {0, 0, 1, -1};
+int dy[] = {1, -1, 0, 0};
+int sy, sx, doy, dox;
 bool check_range(int y, int x){
     return y>=0 && y<n && x>=0 && x<m;
 }
 
-
-bool water(vector<vector<int>> &turns){
-    bool moved = false;
-    vector<pair<int,int>> waters;
-    for(int i = 0;i<n;i++){
-        for(int j = 0;j<m;j++){
-            if(turns[i][j] == -1){
-                waters.push_back(make_pair(i,j));
-            }
-        }
-    }
-    for(auto p: waters){
-        int i = p.first;
-        int j = p.second;
-        for(int k = 0;k<4;k++){
-            int ni = i + dy[k];
-            int nj = j + dx[k];
-            if(!check_range(ni, nj)) continue;
-            if(turns[ni][nj] == -1|| turns[ni][nj] == 1 ||turns[ni][nj] == 3) continue;
-            moved = true;
-            turns[ni][nj] = -1;
-        }
-    }
-    return moved;
-}
-
-
-bool go(int a, int b, int turn){
-    queue<tuple<int, int,int>> q;
-    q.push(make_tuple(a, b,turn));
-    check[a][b][turn] = 1;
-    while(!q.empty()){
-        int y, x, z;
-        tie(y, x, z) = q.front();
-        q.pop();
-        if(z >= cnt) return false;
-        if(y== cavey && x == cavex) return true;
-        for(int i = 0;i<4;i++){
-            int ny = y+ dy[i];
-            int nx = x +dx[i];
-            int nz = z+1;
-            if(!check_range(ny, nx)) continue;
-            if(blocks[nz][ny][nx] == 1 || blocks[nz][ny][nx] == -1 || check[ny][nx][nz] >0) continue;
-            q.push(make_tuple(ny,nx,nz));
-            // cout<<ny<<" "<<nx<<nz<<" "<<"\n";
-            check[ny][nx][nz] = check[y][x][z] + 1;
-        }
-    }
-    return false;
-}
-
-
-int main(){
+int main() {
     cin>>n>>m;
-    vector<vector<int>> block(n, vector<int>(m));
-    vector<string> board(n);
-    int dody, dodx;
+    vector<string> a(n);
     for(int i = 0;i<n;i++){
-        cin>>board[i];
-        for(int j = 0;j<m;j++){
-        //   cout<<board[i][j]<<" ";
-           if(board[i][j] == '.') block[i][j] = 0;
-           else if(board[i][j] == 'X') block[i][j] = 1; 
-           else if(board[i][j] == '*') block[i][j] = -1; 
-           else if(board[i][j] == 'S'){
-               dody = i;
-               dodx = j;
-            //   block[i][j] = 0;
-           } 
-           
-           else if(board[i][j] == 'D'){
-               block[i][j] = 3;
-               cavey = i;
-               cavex = j;
-           }
-        }
-        // cout<<"\n";
+        cin>>a[i];
     }
-    // cout<<dody<<" "<<dodx<<"\n";
-    // cout<<cavey<<" "<<cavex<<"\n";
-    cnt = 0;
-    vector<vector<int>> tempblock = block;
-    
-    while(true){
-        blocks[cnt] = tempblock;
-        // for(int i = 0;i<n;i++){
-        //     for(int j = 0;j<m;j++){
-        //         cout<<tempblock[i][j]<<" ";
-        //     }
-        //     cout<<"\n";
-        // }
-        // cout<<"\n";
-        if(!water(tempblock)) break;
-        cnt++;
-    }
-    
-    if(go(dody, dodx, 0)){
-        for(int i = 0;i<=cnt;i++){
-            if(check[cavey][cavex][i]>0){
-                cout<<check[cavey][cavex][i] - 1<<"\n";
-                return 0;
+    int water[n][m];
+    memset(water, -1, sizeof(water));
+    queue<pair<int, int>> q;
+    for(int i = 0;i<n;i++){
+        for(int j =0;j<m;j++){
+            if(a[i][j] == '*'){
+                water [i][j] = 0; 
+                q.push(make_pair(i, j));
             }
+            else if(a[i][j] == 'S'){
+                sy =i;
+                sx = j;
+            }
+            else if(a[i][j] == 'D'){
+                doy = i; dox = j;
+            }
+
         }
     }
-    else{
+    while(!q.empty()){
+        int y, x;
+        tie(y,x) = q.front();
+        q.pop();
+        for(int i = 0;i<4;i++){
+            int ny = y+dy[i];
+            int nx = x+dx[i];
+            if(!check_range(ny ,nx)) continue;
+            if(a[ny][nx] == 'D' || a[ny][nx] == 'X' || water[ny][nx] != -1) continue;
+            water[ny][nx] = water[y][x] + 1;
+            q.push(make_pair(ny ,nx));
+        }
+    }
+    q.push(make_pair(sy, sx));
+    memset(d, -1, sizeof(d));
+    d[sy][sx] = 0;
+    
+    while(!q.empty()){
+        int y, x;
+        tie(y, x) = q.front();
+        q.pop();
+        // if(y == doy && x == dox) break;
+        for(int i = 0;i<4;i++){
+            int ny = y+dy[i];
+            int nx = x+dx[i];
+            if(!check_range(ny ,nx)) continue;
+            if(d[ny][nx] != -1 || a[ny][nx] == 'X') continue;
+            if(water[ny][nx] != -1 && d[y][x] + 1>=water[ny][nx]) continue;
+            d[ny][nx] = d[y][x] + 1;
+            q.push(make_pair(ny, nx));
+        }
+    }   
+    // for(int i = 0;i<n;i++){
+    //     for(int j =0;j<m;j++){
+    //         cout<<a[i][j]<<" ";
+    //     }
+    //     cout<<"\n";
+    // }
+    // for(int i = 0;i<n;i++){
+    //     for(int j =0;j<m;j++){
+    //         cout<<water[i][j]<<" ";
+    //     }
+    //     cout<<"\n";
+    // }
+    
+    // for(int i = 0;i<n;i++){
+    //     for(int j =0;j<m;j++){
+    //         cout<<d[i][j]<<" ";
+    //     }
+    //     cout<<"\n";
+    // }
+    // cout<<sy<<" "<<sx<<"\n";
+    // cout<<doy<<" "<<dox<<"\n";
+    // if(d[doy][dox] != -1){
+    if(d[doy][dox] == -1){
         cout<<"KAKTUS"<<"\n";
     }
+    else{
+         cout<<d[doy][dox]<<"\n";
+    }
+ 
+    // }
     return 0;
 }
