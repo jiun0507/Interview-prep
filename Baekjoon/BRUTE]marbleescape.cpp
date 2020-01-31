@@ -1,5 +1,7 @@
 //baekjoon 13460
 //marble escape
+//baekjoon 13460
+//marble escape
 
 #include <iostream>
 #include <string>
@@ -10,7 +12,7 @@ using namespace std;
 
 int n,m;
 int mini = 1000000001;
-int newx[4] = {0, 0, 1, -1};
+int newx[4] = {0, 0, -1, 1};
 int newy[4] = {1, -1, 0, 0};
 int block[25][25] = {0};
 bool found = false;
@@ -48,16 +50,28 @@ int simulate(int dir, int &y, int &x){
 }
 int go(int click, int yr, int xr, int yb, int xb, int dir){
 	if(click>10) return 11;
-	// cout<<"click : "<< click<<"\n";
-	// for(int i = 0;i<n;i++){
-	// 	for(int j =0;j<m;j++){
-	// 		cout<<block[i][j]<<" ";
-	// 	}
-	// 	cout<<"\n";
-	// }
-	// cout<<"\n";
+// 	cout<<"click : "<< click<<"\n";
+// 	for(int i = 0;i<n;i++){
+// 		for(int j =0;j<m;j++){
+// 			cout<<block[i][j]<<" ";
+// 		}
+// 		cout<<"\n";
+// 	}
+// 	cout<<"\n";
+	int nblock[n][m];
+	for(int i = 0;i<n;i++){
+		for(int j =0;j<m;j++){
+		    nblock[i][j] = block[i][j];
+		}
+	}
 	int ans = 11;
 	for(int i = 0;i<4;i++){
+    	for(int j = 0;j<n;j++){
+    		for(int k =0;k<m;k++){
+    		    block[j][k] = nblock[j][k];
+    		}
+    	}
+    // 	cout<<i<<" "<<"\n";
 		if(dir != -1){
 			// if(dir == i) continue;
 			if(newy[dir] == newy[i] || newx[dir] == newx[i]) continue;
@@ -85,14 +99,23 @@ int go(int click, int yr, int xr, int yb, int xb, int dir){
 				break;
 			}
 		}
+// 		cout<<newyr<<" "<<newxr<<" "<<newyb<<" "<<newxb<<"\n";
 		if(blue) continue;
 		if(red){
 			return click+1;	
 		}
-		if(newyr == yr && newxr == xr ){
-			continue;
-		}
-		// cout<<newyr<<" "<<newxr<<" "<<newyb<<" "<<newxb<<"\n";
+        //This part was the problem. Red sometimes need to stay in the same
+        //position to reach the goal.
+        //EX
+        // 5 7
+        // #######
+        // #######
+        // ###.###
+        // #O.BR##
+        // #######
+// 		if(newyr == yr && newxr == xr ){
+// 			continue;
+// 		}
 		int temp = go(click + 1, newyr, newxr, newyb, newxb, i);
 		if(ans > temp) ans = temp;
 			
@@ -132,12 +155,12 @@ int main() {
 			else if(c == '.') block[i][k] = 0;				
 		}
 	}
-	// for(int i = 0;i<n;i++){
-	// 	for(int j =0;j<m;j++){
-	// 		cout<<block[i][j]<<" ";
-	// 	}
-	// 	cout<<"\n";
-	// }
+// 	for(int i = 0;i<n;i++){
+// 		for(int j =0;j<m;j++){
+// 			cout<<block[i][j]<<" ";
+// 		}
+// 		cout<<"\n";
+// 	}
 	
 	// cout<<yr<<" "<<xr<<" "<<yb<<" "<<xb<<"\n";
 	int ans = go(0, yr, xr, yb, xb, -1);
