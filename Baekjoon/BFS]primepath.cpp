@@ -1,12 +1,17 @@
 //baekjoon 1963
 //소수경로
-
 #include <iostream>
 #include <algorithm>
 #include <cstring>
 #include <queue>
 using namespace std;
 
+int change(int num, int index, int digit) {
+    if (index == 0 && digit == 0) return -1;
+    string s = to_string(num);
+    s[index] = digit+'0';
+    return stoi(s);
+}
 bool can(int y, int x){
     int cnt = 0;
     for(int i = 0;i<4;i++){
@@ -43,11 +48,14 @@ int main(void){
             int cur = q.front();
             q.pop();
             if(cur == t) break;
-            for(int i = 1000;i<10000;i++){
-                if(d[i] != -1 || check[i]) continue;
-                if(!can(cur, i)) continue;
-                q.push(i);
-                d[i] = d[cur] + 1;
+            for (int i=0; i<4; i++) {
+                for (int j=0; j<=9; j++) {
+                    int next = change(cur, i, j);
+                    if(d[next] != -1 || check[next]) continue;
+                    if(!can(cur, next)) continue;
+                    q.push(next);
+                    d[next] = d[cur] + 1;
+                }
             }    
         }
         if(d[t] == -1){
