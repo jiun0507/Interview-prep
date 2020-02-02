@@ -14,7 +14,8 @@ vector<vector<string>> storage(10);
 void store(string left, string right, bool equal){
     int setL= -1;
     int setR = -1;
-    for(int i = 0;i<storage.size();i++){
+    int i = 0;
+    while(!storage[i].empty()){
         vector<string>::iterator itL;
         vector<string>::iterator itR;
         itL = find (storage[i].begin(), storage[i].end(), left); 
@@ -25,13 +26,24 @@ void store(string left, string right, bool equal){
         if(itR != storage[i].end()){
             setR = i;
         }
+        i++;
     }
     if(setL == -1){
-        storage[storage.size()-1].push_back(left);
-        cout<<"stored"<<"\n";
+        storage[i].push_back(left);
+        setL = i;
+        if(!equal) i++;
+        cout<<left<<" stored at: "<<setL<<"\n";
+        
     }
     if(setR == -1){
-        storage[storage.size()-1].push_back(right);
+        if(equal){
+            setR = setL;
+        } 
+        else{
+            setR = i;
+        }
+        storage[setR].push_back(right);
+        cout<<right<<" stored at: "<<setR<<"\n";
     }
 }
 
@@ -42,7 +54,11 @@ int main(void){
     int setnum = 0;
     for(int i = 0;i<line.size();i++){
         char cur = line.at(i);
-        if(cur == '&'){
+        if(cur == '&'||i == line.size()-1){
+            if(i == line.size()-1){
+                buf += line.at(i);
+                
+            }
             int first = buf.find("==");
             int second = buf.find("!=");
             string left;
@@ -55,9 +71,12 @@ int main(void){
             }
             else{
                 left = buf.substr(0, second);
-                right = buf.substr(first+2, buf.size()-second-1);
+                right = buf.substr(second+2, buf.size()-second-1);
                 store(left, right, 0);
                 cout<<left<<" "<<right<<"\n";
+            }
+            if(i == line.size()-1){
+                break;
             }
             buf = "";
             i+=2;
