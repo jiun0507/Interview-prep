@@ -14,7 +14,6 @@ vector<int> gen(int k){
     }
     return ans;
 }
-
 int flip(vector<int> &dir, vector<string> before){
     for(int i = 0;i<n;i++){
         if(dir[i] == 1){
