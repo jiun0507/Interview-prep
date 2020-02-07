@@ -2,7 +2,6 @@
 //롤러코스터
 //변이 한쪽이라도 홀수면 지그재그로 풀수 있음.
 //둘다 짝수일때 스킵할 칸을 고르고 답을 찾음.
-
 #include <iostream>
 #include <bits/stdc++.h>
 
@@ -84,41 +83,36 @@ int main(void){
         }
         if(one&&two) break;
     }
-    int check[3][w+1];
-    memset(check, 0, sizeof(check));
-    check[1][1] = 1;
-    int dist = starty-1;
-    goaly -= dist;
-    row -= dist;
-    starty = 1;
-    check[row][col] = 1;
-
-    string second = "";
-    int cnt = 0;
+    string second1 = "";
+    string second2 = "";
     while(true){
-        cnt ++;
-        if((starty == goaly && startx == goalx) || cnt>3*w){
-            break;
+        bool one = false;
+        bool two = false;
+        if(col<=startx + 1){
+            one = true;
         }
-        for(int i = 0;i<3;i++){
-            int newy = starty + dy[i];
-            int newx = startx + dx[i];
-            if(newy>=1 && newy <=2 && newx >=1 && newx <=w && (row != newy || col != newy)){
-                if(!check[newy][newx]){
-                    check[newy][newx] = 1;
-                    if(i == 0) second += 'U';
-                    else if(i ==1) second += 'D';
-                    else if(i ==2) second += 'R';
-                    starty = newy;
-                    startx = newx;
-                    // cout<<starty<<" "<<startx<<"\n";
-                    break;
-                }
-            }
+        else{
+            // second1 += 'D'+'R'+'U'+'R';
+            second1 += "DRUR";
+            startx +=2;
         }
+        if(goalx-1<=col){
+            two= true;
+        }
+        else{
+            // second2 += 'R'+'U'+'R'+'D';
+            second2 += "RURD";
+            goalx -=2;
+        }
+        if(one&&two) break;
     }
-    
-    ans = first + second + third;
+    if(row == starty){
+        second1 += "DR";
+    }
+    else{
+        second1 += "RD";
+    }
+    ans = first + second1 + second2+ third;
     cout<<ans<<"\n";
     // cout<<first<<"\n"<<second<<"\n"<<third;
 
