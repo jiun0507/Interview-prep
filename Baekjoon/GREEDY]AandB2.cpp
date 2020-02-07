@@ -1,35 +1,33 @@
 //baekjoon 12919
 //A와 B 2
-
 #include <iostream>
 #include <bits/stdc++.h>
 
 using namespace std;
 string s;
-bool fin(int a, int b, string t){
-    if(a<0 || b<0){
-        return false;
-    }
+
+string cut(string t){
+    t.pop_back();
+    return t;
+}
+
+string revcut(string t){
+    reverse(t.begin(), t.end());
+    t.pop_back();
+    return t;
+}
+
+bool fin(string t){
     if(t == s){
         return true;
     }
+    if(t.length() == 0) return false;
     if(t.at(0) == 'B'){
-        bool one;
-        if(t.at(t.size()-1) == 'A'){
-            string newt = t;
-            newt.pop_back();
-            one = fin(a-1, b, newt) ;   
-        }
-        reverse(t.begin(), t.end());
-        t.pop_back();
-        return one || fin(a, b-1, t);
+        if(t.back() == 'A') return fin(cut(t)) || fin(revcut(t));
+        return fin(revcut(t));
     }
-    else if(t.at(t.size()-1)== 'B'){
-        return false;
-    }
-    else if(t.at(t.size()-1) == 'A'){
-        t.pop_back();
-        return fin(a-1, b, t);
+    else if(t.back() == 'A'){
+        return fin(cut(t));
     }
 
     // cout<<t<<"\n";
@@ -41,27 +39,8 @@ int main(void){
     string t;
     cin>>s;
     cin>>t;
-    int a,b;
-    a = b = 0;
-    for(int i = 0;i<t.size();i++){
-        if(t.at(i) == 'A'){
-            a++;
-        }
-        else{
-            b++;
-            
-        }
-    }
-    for(int i = 0;i<s.size();i++){
-        if(s.at(i) == 'A'){
-            a--;
-        }
-        else{
-            b--;
-            
-        }
-    }
-    cout<<fin(a, b, t);
+
+    cout<<fin(t)<<"\n";
     // cout<<a<<"\n"<<b<<"\n";
     
 }
