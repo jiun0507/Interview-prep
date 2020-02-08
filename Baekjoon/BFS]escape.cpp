@@ -1,3 +1,5 @@
+//baekjoon 3055
+//탈출
 #include <iostream>
 #include <tuple>
 #include <algorithm>

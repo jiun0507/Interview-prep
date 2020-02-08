@@ -76,6 +76,7 @@ int go(int click, int yr, int xr, int yb, int xb, int dir){
 			// if(dir == i) continue;
 			if(newy[dir] == newy[i] || newx[dir] == newx[i]) continue;
 		}
+
 		int newyr = yr;
 		int newxr = xr;
 		int newyb = yb;

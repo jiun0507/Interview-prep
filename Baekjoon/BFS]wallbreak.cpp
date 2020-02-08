@@ -9,7 +9,6 @@ using namespace std;
 int n,m;
 int check[1001][1001][2];
 int block[1001][1001];
-int dist[1001][1001][2];
 int dy[4] = {-1, 1, 0, 0};
 int dx[4] = {0, 0, -1, 1};
 

@@ -1,7 +1,7 @@
 //baekjoon 1891
 //사분면
 
-
+//longlong 사용하기
 #include <iostream>
 #include <bits/stdc++.h>
 

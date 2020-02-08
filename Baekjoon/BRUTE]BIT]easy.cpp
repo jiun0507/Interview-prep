@@ -9,11 +9,8 @@
 using namespace std;
 
 int n;
-int mini = 1000000001;
 int newx[4] = {0, 0, 1, -1};
 int newy[4] = {1, -1, 0, 0};
-
-bool found = false;
 
 vector<int> generate(int k){
 	vector<int> mask;

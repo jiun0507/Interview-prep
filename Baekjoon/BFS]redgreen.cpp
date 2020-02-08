@@ -1,5 +1,6 @@
-//
+
 //baekjoon 10026
+//적록색약
 #include <iostream>
 #include <string>
 #include <vector>
