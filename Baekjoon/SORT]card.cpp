@@ -1,5 +1,5 @@
-//baekjoon 10825
-//국영수
+//baekjoon 11652
+//카드
 #include <iostream>
 #include <bits/stdc++.h>
 
@@ -10,9 +10,6 @@ struct person{
     int english;
     int math;
 };
-bool cmp(const Person &u, const Person &v) {
-    return make_tuple(-u.korean, u.english, -u.math, u.name) < make_tuple(-v.korean, v.english, -v.math, v.name);
-}
 bool cmp_y(person &u, person &v){
     if(u.korean>v.korean){
         return true;
@@ -38,16 +35,29 @@ int main(void){
 	cin.tie(nullptr);
     int n;
     cin>>n;
-    vector<person> a(n);
+    vector<long long> a(n);
     for(int i =0;i<n;i++){
-        string name;
-        int korean, english,math;
-        cin>>name>>korean>>english>>math;
-        person temp = {name, korean, english,math};
-        a[i] =temp ;
+        cin>>a[i];
     }
-	sort(a.begin(), a.end(), cmp_y);
-    for(int i =0;i<n;i++){
-        cout<<a[i].name<<"\n";
+	sort(a.begin(), a.end());
+	long long ans = a[0];
+	int max = 1;
+	int cnt = 1;
+	long long prev = a[0];
+    for(int i =1;i<n;i++){
+        if(prev == a[i]){
+            cnt++;
+        }
+        else{
+            cnt = 1;
+            prev = a[i];
+        }
+        if(cnt>max){
+            max = cnt;
+            ans = a[i];
+        }
     }
+    
+    cout<<ans<<"\n";
+    return 0;
 }
