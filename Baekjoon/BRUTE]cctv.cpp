@@ -7,7 +7,6 @@ int n, m;
 int dy[4] = {0, 1, 0, -1};
 int dx[4] = {1, 0, -1, 0};
 vector<pair<int,int>> cameras;
-
 void watch(vector<vector<int>> &curboard, int y, int x, int direc){
      int type = curboard[y][x];
      int up, down, left, right;
@@ -60,7 +59,6 @@ void watch(vector<vector<int>> &curboard, int y, int x, int direc){
     }
     return;
 }
-
 vector<int> makevector(int bit, int size){
     vector<int> directions;
     for(int i = 0;i<size;i++){
@@ -69,9 +67,7 @@ vector<int> makevector(int bit, int size){
     }
     return directions;
 }
-
 int go(vector<vector<int>> &board, vector<int> &directions){
-    
     for(int i = 0;i<directions.size();i++){
         int y,x;
         y = cameras[i].first;
@@ -82,12 +78,10 @@ int go(vector<vector<int>> &board, vector<int> &directions){
     for(int i = 0;i<n;i++){
         for(int j = 0;j<m;j++){
             if(board[i][j] == 0) ans++;
-            
         }
     }
     return ans;
 }
-
 int main(void){
     cin>>n>>m;
     vector<vector<int>> board(n, vector<int>(m));
@@ -100,7 +94,6 @@ int main(void){
         }
     }
     int ans = -1;
-    
     for(int i = 0;i<(1<<(2*cameras.size()));i++){
         vector<int> directions = makevector(i, cameras.size());
         vector<vector<int>> curboard(board);
@@ -108,8 +101,6 @@ int main(void){
         if(ans == -1 || partial <ans){
             ans = partial;
         }
-        
     }
-    
     cout<<ans<<"\n";
 }
