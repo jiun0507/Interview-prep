@@ -30,6 +30,9 @@ void rotation(vector<vector<int>> &board, tuple<int,int,int> move){
     
     for(int l = 1;l<=size;l++){
         auto& group = groups[l-1];
+        //rotate(begin, the pointer that comes at beginning, end)
+        //since using begin, end pointer function gives us left rotation I used rbegin, rend which is 
+        //reverse iterator for vector
         rotate(group.rbegin(), group.rbegin()+1, group.rend());
         int index = 0;
         for(int i = x-l;i<x+l;i++){
