@@ -1,4 +1,3 @@
-
 //baekjoon 9935
 //문자열 폭발
 #include <iostream>
@@ -12,10 +11,8 @@ int main(void){
     cin>>line;
     cin>>bomb;
     stack<char> detect;
-    // detect.push(line.at(0));
     int bombindex = 0;
     int bombarray[line.size()+1];
-    // if(detect.top() == bomb.at(0)) bombindex = 1;
     for(int i = 0;i<line.size();i++){
         char cur = line.at(i);
         detect.push(cur);
@@ -47,5 +44,4 @@ int main(void){
     }
     reverse(ans.begin(), ans.end());
     cout<<ans<<"\n";
-
 }
