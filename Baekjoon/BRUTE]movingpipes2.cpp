@@ -19,10 +19,11 @@ long long go(int y, int x, int dir){
     if(y == n-1 && x == n-1){
         return 1;
     }
-    if(memo[y][x][dir] != -1){
-        return memo[y][x][dir];
+    long long &ans = memo[y][x][dir];
+    if(ans != -1){
+        return ans;
     }
-    long long ans = 0;
+    ans = 0;
     bool zero = check_range(y + dy[0], x + dx[0]);
     bool one = check_range(y + dy[1], x + dx[1]);
     bool two = check_range(y + dy[2], x + dx[2]);
