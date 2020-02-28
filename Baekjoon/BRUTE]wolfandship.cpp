@@ -56,7 +56,6 @@ int main() {
 	memset(check, -1, sizeof(check));
 	for(int i = 0;i<n;i++){
 		cin>>farm[i];
-// 		cout<<farm[i]<<"\n";
 	}
 	int ans = BFS();
 	if(ans == -1){
@@ -67,12 +66,6 @@ int main() {
 	for(int i = 0;i<n;i++){
 		cout<<farm[i]<<"\n";
 	}
-// 	for(int i = 0;i<n;i++){
-// 		for(int j = 0;j<m;j++){
-// 		    cout<<check[i][j]<<" ";
-// 		}
-// 		cout<<"\n";
-// 	}
 	
 	return 0;
 }
