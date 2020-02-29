@@ -24,6 +24,7 @@ pair<int,int> pour(int y, int x, int dir){
     return make_pair(y, x);
 }
 
+
 int BFSwater(pair<int,int> &water){
     
 	queue<pair<int,int>> list;
@@ -38,20 +39,17 @@ int BFSwater(pair<int,int> &water){
         filled[2] = c;
         list.pop();
         for(int dir = 0;dir<6;dir++){
-            auto cur = pour(filled[dy[dir]], filled[dx[dir]], dir);
-            int newa, newb, newc;
-            newa = newb = newc = -1;
-            if(dy[dir] == 0) newa = cur.first;
-            else if(dy[dir] == 1) newb = cur.first;
-            else if(dy[dir] == 2) newc = cur.first;
-            if(dx[dir] == 0) newa = cur.second;
-            else if(dx[dir] == 1) newb = cur.second;
-            else if(dx[dir] == 2) newc = cur.second;
-            if(newb == -1) newb = total - newa - newc;
-            else if(newc == -1) newc = total - newa - newb;
-            if(check[newb][newc] == 0){
-                check[newb][newc] = 1;
-                list.push(make_pair(newb, newc));
+            int next[3] = {filled[0], filled[1], filled[2]};
+            // auto cur = pour(filled[dy[dir]], filled[dx[dir]], dir);
+            next[dx[dir]] += next[dy[dir]];
+            next[dy[dir]] = 0;
+            if(capacity[dx[dir]]<next[dx[dir]]){
+                next[dy[dir]] += next[dx[dir]] - capacity[dx[dir]];
+                next[dx[dir]] = capacity[dx[dir]];
+            }
+            if(check[next[1]][next[2]] == 0){
+                check[next[1]][next[2]] = 1;
+                list.push(make_pair(next[1], next[2]));
             }
         }
         
