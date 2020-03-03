@@ -1,5 +1,5 @@
-//baekjoon 17141
-//연구소 2
+//baekjoon 17142
+//연구소 3
 #include <iostream>
 #include <bits/stdc++.h>
 
@@ -67,7 +67,7 @@ int main() {
         }
 
         BFS(cur, q);
-
+        
         bool full = true;
         int mx = 0;
         for(int i = 0;i<n;i++){
@@ -75,6 +75,9 @@ int main() {
                 if(cur[i][j] == -1){
                     full= false;
                     break;
+                }
+                if(board[i][j] == 2 && cur[i][j] != 0){
+                    continue;
                 }
                 if(cur[i][j]>mx) mx = cur[i][j];
                 
