@@ -1,5 +1,6 @@
 //baekjoon 1786
 //찾기
+
 #include <iostream>
 #include <bits/stdc++.h>
 using namespace std;
