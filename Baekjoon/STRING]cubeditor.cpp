@@ -1,5 +1,3 @@
-//baekjoon 1701
-//Cubeditor
 #include <iostream>
 #include <bits/stdc++.h>
 using namespace std;
@@ -27,18 +25,15 @@ int main(void){
     string str;
     cin>>str;
     int ans = 0;
-    for(int i = 0;i < str.size();i++){
-        string temp(str.begin()+i, str.end());
-        // cout<<temp<<"\n";
-        vector<int> pi = preprocess(temp);
-        int len = temp.length();
-        int candi = 0;
-        for(int i = 0;i<len;i++){
-            if(candi<pi[i]) candi = pi[i];
+    reverse(str.begin(), str.end());
+    string a;
+    for(char c : str){
+        a = c + a;
+        vector<int> pi = preprocess(a);
+        int len = a.length();
+        for(int i = 0;i<len;i++){ 
+            if(ans<pi[i]) ans = pi[i];
         }
-        // cout<<candi<<"\n";
-        if(ans < candi) ans = candi;
-        
     }
  
     cout<<ans<<"\n";
