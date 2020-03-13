@@ -87,6 +87,10 @@ int main(void){
             prefix ^= num;
             t.add(prefix);
             int temp = t.search(prefix)^prefix;
+            //t.search(prefix) ->returns a valid node number that has the most
+            //differences(or the one that yields greatest value when xor with 
+            //prefix). So the temp(the biggest xor when prefix is added), is
+            //t.search(prefix) and then ^ prefix.
             if(ans < temp) ans = temp;
             
             
