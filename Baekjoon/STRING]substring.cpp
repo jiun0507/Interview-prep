@@ -6,15 +6,6 @@ using namespace std;
 long long mod = 2147483647;
 long long base = 256;
 
-// bool match(string &s, string &p){
-//     int len = s.length();
-//     bool ans = true;
-//     for(int i = 0;i < len;i++){
-//         if(s.at(i) != p.at(i)) ans = false;
-//     }
-//     return ans;
-// }
-
 long long h(string str){
     long long ans = 0;
     for(char c: str){
