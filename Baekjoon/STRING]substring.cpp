@@ -8,6 +8,7 @@ long long base = 256;
 
 long long h(string str){
     long long ans = 0;
+    
     for(char c: str){
         ans = (ans * base + c ) % mod;
     }
