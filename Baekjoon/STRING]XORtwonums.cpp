@@ -66,6 +66,26 @@ struct Trie{
     int search(int s){
         return search(root, s, 31);
     }
+    //Not find the number in the trie that yields the most result from ^
+    //operation, but the actual maximum result from ^ operation.
+    int query(int node, int s, int index){
+        // if(node == -1){
+        //     return false;
+        // }
+        if(index == -1){
+            return 0;
+        }
+        int c = (s>>index)&1;
+        c = 1 - c;
+        int next = 0;
+        if(trie[node].children[c] != -1){
+            next = 1 << index;
+        } else{
+            c = 1 - c;
+        }
+        
+        return next | query(trie[node].children[c], s, index - 1);
+    }
 };
 
 
