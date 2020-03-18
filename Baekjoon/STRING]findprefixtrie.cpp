@@ -1,6 +1,7 @@
 //baekjoon 14426
 //접두사 찾기
 //solved using trie. Only one line changed from the solution of 14425 문자열 집합
+
 #include <iostream>
 #include <bits/stdc++.h>
 using namespace std;
@@ -17,7 +18,6 @@ struct Trie{
             }
             valid = false;
         }
-        
     };
     vector<Node> trie;
     int root;
@@ -34,7 +34,7 @@ struct Trie{
             trie[node].valid = true;
             return;
         }
-        int c = s[index] - 'a';
+        int c = s.at(index) - 'a';
         if(trie[node].children[c] == -1){
             int next = init();
             trie[node].children[c] = next;
@@ -47,12 +47,13 @@ struct Trie{
         add(root, s, 0);
     }
     bool search(int node, string &s, int index){
-        if(node == -1) return false;
+        if(node == -1){
+            return false;
+        }
         if(index == s.size()){
             return true;
-            // return trie[node].valid;
         }
-        char c = s[index] - 'a';
+        int c = s.at(index) - 'a';
         int child = trie[node].children[c];
         return search(child, s, index + 1);
     }
@@ -67,20 +68,19 @@ int main(void){
     cin.tie(NULL);
     int n, m;
     cin>>n>>m;
-    Trie t;
+    Trie trie;
     for(int i = 0;i<n;i++){
         string str;
         cin>>str;
-        t.add(str);
+        trie.add(str);
     }
     int ans = 0;
     for(int i = 0;i<m;i++){
         string str;
         cin>>str;
-        if(t.search(str)){
+        if(trie.search(str)){
             ans++;
         }
-        
     }
     cout<<ans<<"\n";
     return 0;
