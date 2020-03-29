@@ -1,38 +1,33 @@
 //baekjoon 2281
 //데스노트
+
 #include <iostream>
 #include <bits/stdc++.h>
 using namespace std;
 
 int n, m;
 long long d[1001][1001];
+long long d2[1001][1001];
 int num[1001];
-// long long go(int index, int a, int b, int c){
-//     if(index == 0){
-//         if(a == 0 && b == 0 && c == 0){
-//             return 1;
-//         }
-//         return 0;
-//     }
-//     if(a<0 || b<0 || c<0) return 0;
-//     long long &ans = d2[index][a][b][c];
-//     if(ans != -1){
-//         return ans;
-//     }
-//     ans = 0;
-//     for(int i =0;i<2;i++){
-//         for(int j = 0;j<2;j++){
-//             for(int k = 0;k<2;k++){
-//                 if(i == 0 && j == 0 && k ==0) continue;
-//                 ans += go(index-1, a-i, b-j, c-k);
-//                 ans %= mod;
-//             }
-//         }
-//     }
+long long go(int index, int space){
+    if(index == n){
+        return 0;
+    }
+    long long &ans = d2[index][space];
+    if(ans != -1){
+        return ans;
+    }
+    int cost = (space+1) * (space+1);
+    ans = go(index + 1, m - num[index] - 1) +  cost;
+    if(space >= num[index]){
+        if(space == num[index]) ans = min(ans, go(index + 1, m));
+        else{
+            ans = min(ans, go(index + 1, space - num[index] - 1));
+        }
+    }
     
-    
-//     return ans;
-// }
+    return ans;
+}
 
 int main(void){
     ios_base::sync_with_stdio(false);
@@ -43,6 +38,7 @@ int main(void){
         // cout<<num[i]<<" ";
     }
     // cout<<"\n";
+    memset(d2, -1, sizeof(d2));
     memset(d, -1, sizeof(d));
     d[0][m] = 0;
     for(int i = 0;i<n;i++){
@@ -67,10 +63,12 @@ int main(void){
     }
     int mn = -1;
     for(int i = 0;i<=m;i++){
-        // cout<<d[11][i]<<"\n";
         if(d[n][i]==-1) continue;
         if(mn == -1 || mn > d[n][i]) mn = d[n][i];
     }
-    cout<<mn<<"\n";
+    // cout<<mn<<"\n";
+    
+    cout<<go(0, m)<<"\n";
+    
     return 0;
 }
