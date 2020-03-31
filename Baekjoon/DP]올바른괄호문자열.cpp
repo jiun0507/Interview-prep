@@ -66,9 +66,7 @@ int main(void){
         else if(str.at(i) == ']') num[i] = 6;
         else if(str.at(i) == '?') num[i] = 0;
     }
-    // for(int i = 0;i<str.size();i++){
-        // cout<<num[i]<<"";
-    // }
+
     memset(d, -1, sizeof(d));
     long long ans = go(0, n-1);
     if (ans >= mod) {
