@@ -7,7 +7,7 @@ using namespace std;
 int n;
 long long num[101];
 long long d[501][501];
-
+    
 int main(void){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);

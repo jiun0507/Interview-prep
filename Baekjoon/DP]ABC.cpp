@@ -51,21 +51,6 @@ int main(void){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cin>>n>>k;
-    // d[1][1][0][0] = 1;
-    // d[1][0][1][0] = 1;
-    // d[1][0][0][0] = 1;
-    // for(int i = 2;i<=n;i++){
-    //     for(int a = 0;a<=n;a++){
-    //         for(int b = 0;b<=n;b++){
-    //             for(int j = 0;j<=k;j++){
-    //                 int &temp = d[i][a][b][j];
-    //                 if(a>0) temp += d[i-1][a-1][b][j];
-    //                 if(b>0 && j - a >=0) temp += d[i-1][a][b-1][j-a];
-    //                 if(i -a - b>0 && j-a-b>=0) temp += d[i-1][a][b][j-a-b];
-    //             }
-    //         }
-    //     }
-    // }
 
     if(go(0, 0, 0, 0)){
         return 0;
