@@ -8,30 +8,35 @@ int n;
 vector<int> num;
 int d[10001];
 
-int main(void){
+int main(void)
+{
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    cin>>n;
+    cin >> n;
     int mx = 0;
-    for(int i = 0 ;i<n;i++){
+    for (int i = 0; i < n; i++)
+    {
         int buf;
-        cin>>buf;
+        cin >> buf;
         num.push_back(buf);
-        if(buf>mx) mx = buf;
+        if (buf > mx)
+            mx = buf;
     }
-    d[0] =1;
-    for(int j = 1; j<4;j++){
-        for(int i = 1;i<=mx;i++){
-            if(i-j>=0){
-                d[i] += d[i-j];
+    d[0] = 1;
+    for (int j = 1; j < 4; j++)
+    {
+        for (int i = 1; i <= mx; i++)
+        {
+            if (i - j >= 0)
+            {
+                d[i] += d[i - j];
             }
         }
     }
-    for(int i = 0 ;i<n;i++){
-        cout<<d[num[i]]<<"\n";
+    for (int i = 0; i < n; i++)
+    {
+        cout << d[num[i]] << "\n";
     }
 
-
     return 0;
-
 }
