@@ -9,9 +9,14 @@ int n, m;
 int scores[11];
 int d[5001][1001];
 
-long long gcd(long long x, long long y){
-    if(y == 0) return x;
-    else return gcd(y, x%y);
+void go(int i, int j){
+    if(i>push_max) return;
+    if(d[i][j]) return;
+    d[i][j] = true;
+    for(int k = 0;k<score_type;k++){
+        go(i + j + scores[k], j + scores[k]);
+    }
+    return;
 }
 
 int main(void){
