@@ -28,12 +28,37 @@ long long go(long long a, long long b)
     return ans;
 }
 
-int main(void)
-{
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    cin >> n >> m >> mod;
+/*
+분할정복
+b를 계속 2로 나누어 주면서 분할해서 결국 log b 만큼의 계산만하게 된다.
+*/
 
-    cout << go(n, m) << "\n";
-    return 0;
-}
+long long go2(long long a, long long b)
+{
+    if (b == 0)
+    {
+        return 1LL;
+    }
+    if (b == 1)
+    {
+        return a % mod;
+    }
+    if (b % 2 == 0)
+    {
+        long long temp = go2(a, b / 2) % mod;
+        return (temp * temp) % mod;
+    }
+    else
+    {
+        return (a * go2(a, b - 1)) % mod;
+    }
+
+    int main(void)
+    {
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
+        cin >> n >> m >> mod;
+
+        cout << go(n, m) << "\n";
+        return 0;
+    }
