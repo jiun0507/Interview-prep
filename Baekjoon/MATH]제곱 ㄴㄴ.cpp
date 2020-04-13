@@ -9,6 +9,10 @@ long long k;
 vector<int> primes;
 int c[MAX + 1];
 
+
+/*
+포함 배제 구현
+*/
 long long calc(int index, long long num, long long m)
 {
     if (index >= primes.size())
@@ -26,7 +30,7 @@ int main(void)
 {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-
+    //prime에 제곱을 넣어버림(겹치는 것 없이)
     for (int i = 2; i <= MAX; i++)
     {
         if (c[i])
