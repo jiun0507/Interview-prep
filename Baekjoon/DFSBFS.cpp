@@ -10,46 +10,56 @@
 #include <cstdio>
 using namespace std;
 
-int n,m;
+int n, m;
 bool connection1[1001][1001];
 vector<int> connection2[1001];
-vector<pair<int,int>> connection3;
+vector<pair<int, int>> connection3;
 int check[1001];
 int cnt[1001];
 
-void DFSlist(int index){
+void DFSlist(int index)
+{
 	check[index] = 1;
-	cout<<index<<" ";
-	for(int E:connection2[index]){
-		if(!check[E]){
+	cout << index << " ";
+	for (int E : connection2[index])
+	{
+		if (!check[E])
+		{
 			DFSlist(E);
 		}
 	}
 	return;
 }
 
-void DFSarray(int index){
+void DFSarray(int index)
+{
 	check[index] = 1;
-	cout<<index<<" ";
-	for(int i = cnt[index-1];i< cnt[index];i++){
+	cout << index << " ";
+	for (int i = cnt[index - 1]; i < cnt[index]; i++)
+	{
 		int next = connection3[i].second;
-		if(!check[next]){
+		if (!check[next])
+		{
 			DFSarray(next);
 		}
 	}
 	return;
 }
 
-void BFSlist(int index){
+void BFSlist(int index)
+{
 	queue<int> q;
 	q.push(index);
 	check[index] = 1;
-	while(!q.empty()){
+	while (!q.empty())
+	{
 		int top = q.front();
 		q.pop();
-		cout<<top<<" ";
-		for(int E: connection2[top]){
-			if(!check[E]){
+		cout << top << " ";
+		for (int E : connection2[top])
+		{
+			if (!check[E])
+			{
 				q.push(E);
 				check[E] = 1;
 			}
@@ -57,18 +67,22 @@ void BFSlist(int index){
 	}
 	return;
 }
-void BFSarray(int index){
+void BFSarray(int index)
+{
 	queue<int> q;
 
 	q.push(index);
 	check[index] = 1;
-	while(!q.empty()){
+	while (!q.empty())
+	{
 		int top = q.front();
 		q.pop();
-		cout<<top<<" ";
-		for(int i = cnt[top-1];i<cnt[top];i++){
+		cout << top << " ";
+		for (int i = cnt[top - 1]; i < cnt[top]; i++)
+		{
 			int next = connection3[i].second;
-			if(!check[next]){
+			if (!check[next])
+			{
 				q.push(next);
 				check[next] = 1;
 			}
@@ -77,33 +91,38 @@ void BFSarray(int index){
 	return;
 }
 //
-int main() {
+int main()
+{
 	int start;
-	cin>>n>>m>>start;
-	for(int i =0 ;i<m;i++){
+	cin >> n >> m >> start;
+	for (int i = 0; i < m; i++)
+	{
 		int from, to;
-		cin>>from>>to;
+		cin >> from >> to;
 		connection3.push_back({from, to});
 		connection3.push_back({to, from});
 		connection2[from].push_back(to);
 		connection2[to].push_back(from);
 		connection1[from][to] = connection1[to][from] = 1;
 	}
-	
-	for(int i = 0;i<n;i++){
+
+	for (int i = 0; i < n; i++)
+	{
 		sort(connection2[i].begin(), connection2[i].end());
 	}
-	m*=2;//pushed twice for one edge in connection3 because it is bidirection
+	m *= 2; //pushed twice for one edge in connection3 because it is bidirection
 	sort(connection3.begin(), connection3.end());
-	for(int i = 0;i<m;i++){
+	for (int i = 0; i < m; i++)
+	{
 		cnt[connection3[i].first] += 1;
 	}
-	for(int i = 1;i<=n;i++){
-		cnt[i] += cnt[i-1];
+	for (int i = 1; i <= n; i++)
+	{
+		cnt[i] += cnt[i - 1];
 	}
 
 	DFSarray(start);
-	cout<<"\n";
+	cout << "\n";
 	memset(check, 0, sizeof(check));
 	BFSarray(start);
 	return 0;
