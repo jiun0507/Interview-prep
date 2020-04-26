@@ -30,5 +30,5 @@
 *.exe
 *.out
 *.app
-
+#mac
 .DS_Store
