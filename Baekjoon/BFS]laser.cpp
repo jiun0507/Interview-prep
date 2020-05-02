@@ -13,9 +13,11 @@ int d[100][100];
 int dx[] = {0,0,1,-1};
 int dy[] = {1,-1,0,0};
 int fy ,fx , sy , sx ;
+
 bool check_range(int y, int x){
     return y>=0 && y<n && x>=0 && x<m;
 }
+
 void lifesaver(int a, int b){
     memset(d, -1, sizeof(d));
     queue<pair<int,int>> q;
