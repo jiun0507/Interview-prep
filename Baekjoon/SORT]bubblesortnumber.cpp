@@ -6,25 +6,29 @@
 
 using namespace std;
 
-int main(void){
+int main(void)
+{
     ios_base::sync_with_stdio(false);
-	cin.tie(nullptr);
+    cin.tie(nullptr);
     int n;
-    cin>>n;
-    vector<pair<int,int>> a(n);
-    for(int i =0;i<n;i++){
+    cin >> n;
+    vector<pair<int, int>> a(n);
+    for (int i = 0; i < n; i++)
+    {
         int temp;
-        cin>>temp;
+        cin >> temp;
         a[i].first = temp;
         a[i].second = i;
     }
-	sort(a.begin(), a.end());
-	int cnt = 0;
-	for(int i =0;i<n;i++){
-        if(a[i].second-i>cnt){
-            cnt = a[i].second-i;
+    sort(a.begin(), a.end());
+    int cnt = 0;
+    for (int i = 0; i < n; i++)
+    {
+        if (a[i].second - i > cnt)
+        {
+            cnt = a[i].second - i;
         }
     }
-    cout<<cnt+1<<"\n";
+    cout << cnt + 1 << "\n";
     return 0;
 }
