@@ -13,6 +13,7 @@ int check[600][600]; //from b and c
 int total;
 
 pair<int,int> pour(int y, int x, int dir){
+    
     if(capacity[dx[dir]]-x<=y){
         y -= capacity[dx[dir]]-x;
         x = capacity[dx[dir]];
