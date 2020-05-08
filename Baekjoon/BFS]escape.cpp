@@ -13,6 +13,7 @@ int n,m;
 int dx[] = {0, 0, 1, -1};
 int dy[] = {1, -1, 0, 0};
 int sy, sx, doy, dox;
+
 bool check_range(int y, int x){
     return y>=0 && y<n && x>=0 && x<m;
 }
