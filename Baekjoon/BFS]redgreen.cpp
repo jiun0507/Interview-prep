@@ -17,7 +17,8 @@ int block[101][101];
 int dy[4] = {-1, 1, 0, 0};
 int dx[4] = {0, 0, -1, 1};
 
-bool check_range(int y, int x){
+bool check_range(int y, int x)
+{
     return y>=0 && y<n && x>=0 && x<n;
 }
 void go(int a, int b, int label, int letter){
