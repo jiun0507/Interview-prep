@@ -21,7 +21,8 @@ bool check_range(int y, int x)
 {
     return y>=0 && y<n && x>=0 && x<n;
 }
-void go(int a, int b, int label, int letter){
+void go(int a, int b, int label, int letter)
+{
     queue<pair<int, int>> q;
     q.push(make_pair(a,b));
     check[a][b] = label;
