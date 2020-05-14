@@ -11,7 +11,8 @@ int n;
 int X, L,R;
 
 
-int go(int index, int cnt, int sum, int easy, int hard){
+int go(int index, int cnt, int sum, int easy, int hard)
+    {
     if(index == n){
         if(cnt>=2 && sum>=L && sum <=R && (hard-easy)>=X) return 1;
         return 0;
