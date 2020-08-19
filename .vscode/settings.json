@@ -67,5 +67,6 @@
         "bit": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled",
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "code-runner.runInTerminal": true
 }
