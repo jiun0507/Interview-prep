@@ -2,6 +2,7 @@
 //N-Rook II
 #include <iostream>
 #include <bits/stdc++.h>
+
 using namespace std;
 
 int n, m, k;
