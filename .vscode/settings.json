@@ -68,5 +68,6 @@
     },
     "C_Cpp.errorSquiggles": "Disabled",
     "editor.formatOnSave": true,
-    "code-runner.runInTerminal": true
+    "code-runner.runInTerminal": true,
+    "python.formatting.provider": "black"
 }
