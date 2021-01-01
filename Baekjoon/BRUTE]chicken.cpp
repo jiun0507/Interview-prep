@@ -2,7 +2,7 @@
 //양념 반 후라이드 반
 #include <iostream>
 #include <bits/stdc++.h>
-// #include <algorithm>
+
 using namespace std;
 
 int a, b, c, x, y;
