@@ -8,7 +8,6 @@ using namespace std;
 int a, b, c, x, y;
 
 int main(void){
-    
     cin>>a>>b>>c>>x>>y;
     int limit = max(x, y);
     int max = INT_MAX;
