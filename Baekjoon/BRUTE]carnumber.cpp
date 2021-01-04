@@ -2,7 +2,7 @@
 //차량번호판 1
 #include <iostream>
 #include <bits/stdc++.h>
-// #include <algorithm>
+
 using namespace std;
 
 int go(string &a, int index, char last){

@@ -2,36 +2,31 @@
 //차량번호판 1
 #include <iostream>
 #include <bits/stdc++.h>
-// #include <algorithm>
+
 using namespace std;
 
-int main(void){
-    string board;
-    cin>>board;
-    int sum = 1;
-    int cc = 26;
-    int dd = 10;
-    int number = 0;
-    //number 1 = d -> 2 = c
-    for(int i = 0;i<board.size();i++){
-        if(board.at(i) == 'c'){
-            if(number == 2){
-                sum *= cc-1;
-            }
+int main()
+{
+    string input;
+    cin>>input;
+    
+    int num = 1;
+    char prev = 'e';
+    for(int i = 0; input[i] != '\0'; i++){
+        if(input[i] == prev){
+            if(input[i] == 'c') num *= 26 -1;
             else{
-                sum *= cc;
-                number =2;
+                num *= 10-1;
             }
         }
         else{
-            if(number ==1){
-                sum*= dd-1;
-            }
+            if(input[i] == 'c') num *= 26;
             else{
-                sum *= dd;
-                number = 1;
+                num *= 10;
             }
         }
+        prev = input[i];
     }
-    cout<<sum<<"\n";
+    cout<<num<<endl;
+    return 0;
 }
