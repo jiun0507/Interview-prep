@@ -4,23 +4,26 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int main(void){
+int main(void)
+{
     string a;
     int b;
-    cin>>a>>b;
-    
-    sort(a.begin(),a.end());
+    cin >> a >> b;
+
+    sort(a.begin(), a.end());
     reverse(a.begin(), a.end());
 
-    do{
-        if(a[0] == '0') break;
+    do
+    {
+        if (a[0] == '0')
+            break;
         int c = stoi(a);
-        if(c<=b){
-            cout<<c<<"\n";
+        if (c <= b)
+        {
+            cout << c << "\n";
             return 0;
         }
-        
-    }while(prev_permutation(a.begin(), a.end()));
-    cout<<"-1\n";
-    
+
+    } while (prev_permutation(a.begin(), a.end()));
+    cout << "-1\n";
 }

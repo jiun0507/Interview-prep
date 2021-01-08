@@ -8,20 +8,28 @@ int check[10];
 int num[10];
 int n;
 int b;
-int go(int index, int number){
-    if(index == n){
-        if(number<=b) return number;
-        else{
+int go(int index, int number)
+{
+    if (index == n)
+    {
+        if (number <= b)
+            return number;
+        else
+        {
             return -1;
         }
     }
     int ans = -1;
-    for(int i = 0;i<n;i++){
-        if(check[i] == 0){
-            if(index == 0 && num[i] == 0) continue;
+    for (int i = 0; i < n; i++)
+    {
+        if (check[i] == 0)
+        {
+            if (index == 0 && num[i] == 0)
+                continue;
             check[i] = 1;
-            int partial_ans = go(index + 1, number*10+ num[i]);
-            if(partial_ans > ans){
+            int partial_ans = go(index + 1, number * 10 + num[i]);
+            if (partial_ans > ans)
+            {
                 ans = partial_ans;
             }
             check[i] = 0;
@@ -30,15 +38,16 @@ int go(int index, int number){
     return ans;
 }
 
-int main(void){
+int main(void)
+{
     string a;
-    cin>>a;
-    cin>>b;
-    
+    cin >> a;
+    cin >> b;
+
     n = a.length();
-    for(int i = 0;i<n;i++){
+    for (int i = 0; i < n; i++)
+    {
         num[i] = a[i] - '0';
     }
-    cout<<go(0, 0)<<"\n";
-    
+    cout << go(0, 0) << "\n";
 }
