@@ -69,5 +69,8 @@
     "C_Cpp.errorSquiggles": "Disabled",
     "editor.formatOnSave": true,
     "code-runner.runInTerminal": true,
-    "python.formatting.provider": "black"
+    "python.formatting.provider": "black",
+    "python.linting.pylintEnabled": true,
+    "python.linting.flake8Enabled": false,
+    "python.linting.enabled": true
 }
