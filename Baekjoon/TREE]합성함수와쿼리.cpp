@@ -28,6 +28,18 @@ int composite_function(int overlap, int x)
     return x;
 }
 
+int composite_function_using_bitmask(int overlap, int x)
+{
+    for (int i = 0; i < 20; i++)
+    {
+        if (overlap & (1 << i))
+        {
+            x = p[x][i];
+        }
+    }
+    return x;
+}
+
 int main()
 {
     ios_base::sync_with_stdio(false);
