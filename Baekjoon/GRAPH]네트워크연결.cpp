@@ -1,6 +1,6 @@
 //1922 네트워크 연결
 // baekjoon
-
+//연결행렬
 #include <iostream>
 #include <bits/stdc++.h>
 #include <queue>
