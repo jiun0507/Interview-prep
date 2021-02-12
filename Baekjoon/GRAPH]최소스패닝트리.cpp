@@ -1,6 +1,7 @@
 //1197 최소 스패닝 트리
 // baekjoon
 // Union find using arrays(find, union)
+
 #include <iostream>
 #include <bits/stdc++.h>
 #include <queue>
@@ -27,11 +28,11 @@ struct Edge
 
 int find(int node)
 {
-    while (parent[node] != node)
+    if (node == parent[node])
     {
-        node = parent[node];
+        return node;
     }
-    return node;
+    return parent[node] = find(parent[node]);
 }
 
 bool unify(int u, int v)
