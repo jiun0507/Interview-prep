@@ -11,6 +11,19 @@ long long p[31][31]; // undivided, divided
 // p[i][j] = p[i-1][j+1] + p[i][j-1]
 // p[0][i] = 1 => 남은게 반쪽 알밖에 없으면 1가지 방법밖에 없다.
 
+long long topdown(int f, int h)
+{
+    if (p[f][h] != -1)
+        return p[f][h];
+    if (f == 0)
+        return 1;
+    if (h == 0)
+    {
+        return p[f][h] = topdown(f - 1, h + 1);
+    }
+    return p[f][h] = topdown(f - 1, h + 1) + topdown(f, h - 1);
+}
+
 int main()
 {
     ios_base::sync_with_stdio(false);
