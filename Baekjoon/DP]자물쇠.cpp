@@ -1,6 +1,8 @@
 // 1514 자물쇠
 // baekjoon
 
+// dp[i][j][k] = i번째 자물쇠를 j번 돌리고 i+1자물쇠를 k번 돌렸을 때 몇번 돌려야지 열 수 있는가.
+
 #include <iostream>
 #include <bits/stdc++.h>
 #include <queue>
