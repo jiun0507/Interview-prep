@@ -1,7 +1,7 @@
 // 13392 방법을 출력하지 않는 숫자맞추기
 // baekjoon
 
-//
+//dp[i][j] = i번째 숫자까지 j번왼쪽으로 돌렸을 때 걸린 회전 횟수
 
 #include <iostream>
 #include <bits/stdc++.h>
