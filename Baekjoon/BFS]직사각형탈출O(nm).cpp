@@ -25,7 +25,6 @@ int main(void)
             ps[i][j] = board[i][j] + ps[i - 1][j] + ps[i][j - 1] - ps[i - 1][j - 1];
         }
     }
-    // cout<<"shits";
     cin >> h >> w >> sr >> sc >> fr >> fc;
     queue<pair<int, int>> q;
     q.push(make_pair(sr, sc));
