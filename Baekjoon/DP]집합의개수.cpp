@@ -1,4 +1,4 @@
-// 15558 점프 게임
+// 2092 집합의 개수
 // baekjoon
 #include <iostream>
 #include <bits/stdc++.h>
