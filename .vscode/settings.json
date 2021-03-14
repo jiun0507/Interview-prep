@@ -67,7 +67,7 @@
         "bit": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled",
-    "editor.formatOnSave": true,
+    "editor.formatOnSave": false,
     "code-runner.runInTerminal": true,
     "python.formatting.provider": "black",
     "python.linting.pylintEnabled": true,
