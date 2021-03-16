@@ -6,67 +6,50 @@
 using namespace std;
 
 char direction[4] = {'E', 'S', 'W', 'N'};
-const int INF = 1000000000;
 
-int find(stack<int> &dirs, long long x, long long y, int count){
-    if(count>30){
-        return INF;
-    }
+bool find(stack<int> &dirs, long long x, long long y, int count){
     if(y==0&&x==0){
-        return 0;
+        return true;
     }
     long long nx = x%2;
     long long ny = y%2;
     if(nx==0&&ny==0){
-        return INF;
+        return false;
     }
     else if(nx==1&&ny==1){
-        return INF;
+        return false;
     }
-    int ret = INF;
-    int cur = INF;
+
     if(nx==1){
         if(dirs.empty()||(2-dirs.top()!=0)){
             dirs.push(0);
-            int temp = find(dirs, x/2, y/2, count+1)+1;
-            if(temp<ret){
-                ret = temp;
-                cur = 0;
+            if(find(dirs, x/2, y/2, count+1)){
+                return true;
             }
             dirs.pop();
         }
         if(dirs.empty()||(2-dirs.top()!=2)){
             dirs.push(2);
-            int temp = find(dirs, (x+1)/2, y/2, count+1)+1;
-            if(temp<ret){
-                ret = temp;
-                cur = 2;
+            if(find(dirs, (x+1)/2, y/2, count+1)){
+                return true;
             }
             dirs.pop();
         }
     } else if(ny==1) {
         if(dirs.empty()||(4-dirs.top()!=3)){
             dirs.push(3);
-            int temp = find(dirs, x/2, y/2, count+1)+1;
-            if(temp<ret){
-                ret = temp;
-                cur = 3;
+            if(find(dirs, x/2, y/2, count+1)){
+                return true;
             }
             dirs.pop();
         }
         if(dirs.empty()||(4-dirs.top()!=1)){
             dirs.push(1);
-            int temp = find(dirs, x/2, (y+1)/2, count+1)+1;
-            if(temp<ret){
-                ret = temp;
-                cur = 1;
+            if(find(dirs, x/2, (y+1)/2, count+1)){
+                return true;
             }
             dirs.pop();
         }
-    }
-    if(ret != INF){
-        dirs.push(cur);
-        return ret;
     }
     return false;
 }
@@ -91,8 +74,7 @@ int main()
             y *=-1;
         }
         stack<int> ans;
-        int ret = find(ans, x, y, 0);
-        if(ret != INF){
+        if(find(ans, x, y, 0)){
             vector<int> real_ans;
             while(!ans.empty()){
                 real_ans.push_back(ans.top());
