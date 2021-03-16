@@ -7,7 +7,7 @@ using namespace std;
 
 char direction[4] = {'E', 'S', 'W', 'N'};
 
-bool find(stack<int> &dirs, long long x, long long y, int count){
+bool find(stack<int> &dirs, long long x, long long y){
     if(y==0&&x==0){
         return true;
     }
@@ -21,35 +21,27 @@ bool find(stack<int> &dirs, long long x, long long y, int count){
     }
 
     if(nx==1){
-        if(dirs.empty()||(2-dirs.top()!=0)){
-            dirs.push(0);
-            if(find(dirs, x/2, y/2, count+1)){
-                return true;
-            }
-            dirs.pop();
+        dirs.push(0);
+        if(find(dirs, x/2, y/2)){
+            return true;
         }
-        if(dirs.empty()||(2-dirs.top()!=2)){
-            dirs.push(2);
-            if(find(dirs, (x+1)/2, y/2, count+1)){
-                return true;
-            }
-            dirs.pop();
+        dirs.pop();
+        dirs.push(2);
+        if(find(dirs, (x+1)/2, y/2)){
+            return true;
         }
+        dirs.pop();
     } else if(ny==1) {
-        if(dirs.empty()||(4-dirs.top()!=3)){
-            dirs.push(3);
-            if(find(dirs, x/2, y/2, count+1)){
-                return true;
-            }
-            dirs.pop();
+        dirs.push(3);
+        if(find(dirs, x/2, y/2)){
+            return true;
         }
-        if(dirs.empty()||(4-dirs.top()!=1)){
-            dirs.push(1);
-            if(find(dirs, x/2, (y+1)/2, count+1)){
-                return true;
-            }
-            dirs.pop();
+        dirs.pop();
+        dirs.push(1);
+        if(find(dirs, x/2, (y+1)/2)){
+            return true;
         }
+        dirs.pop();
     }
     return false;
 }
@@ -74,7 +66,7 @@ int main()
             y *=-1;
         }
         stack<int> ans;
-        if(find(ans, x, y, 0)){
+        if(find(ans, x, y)){
             vector<int> real_ans;
             while(!ans.empty()){
                 real_ans.push_back(ans.top());
