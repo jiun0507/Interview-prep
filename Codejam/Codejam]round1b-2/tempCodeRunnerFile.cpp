@@ -1,2 +1,2 @@
 
-            }
+        writeFile<<"ans: "<<middle<<"\n";
