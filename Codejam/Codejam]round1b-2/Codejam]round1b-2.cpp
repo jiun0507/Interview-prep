@@ -53,10 +53,10 @@ int horizontal_binary(int left, int right, bool lower_bound){
             }
         } else{
             if(response=="MISS"){
-                ans = middle;
                 right = middle -1;
             }
             else if(response=="HIT"){
+                ans = middle;
                 left = middle + 1;
             }
         }
@@ -89,10 +89,10 @@ int vertical_binary(int down, int up, bool lower_bound){
             }
         } else{
             if(response=="MISS"){
-                ans = middle;
                 up = middle -1;
             }
             else if(response=="HIT"){
+                ans = middle;
                 down = middle + 1;
             }
         }
@@ -108,34 +108,30 @@ int vertical_binary(int down, int up, bool lower_bound){
 bool set2(){
     int hor_a, hor_b;
     hor_a = hor_b = mx+1;
-    hor_a = horizontal_binary(-mx, -mx+110, true);
-    hor_b = horizontal_binary(mx-110,mx, false);
+    hor_a = horizontal_binary(-mx, 0, true);
+    hor_b = horizontal_binary(0,mx, false);
     if(hor_a == mx+1||hor_b ==mx+1){
         return false;
     }
     int x = (hor_a+hor_b)/2;
     int vera, verb;
     vera=verb = mx+1;
-    vera = vertical_binary(-mx, -mx+110, true);
-    verb = vertical_binary(mx-110, mx, false);
+    vera = vertical_binary(-mx, 0, true);
+    verb = vertical_binary(0, mx, false);
     if(vera == mx+1||verb ==mx+1){
         return false;
     }
     string response;
     int y = (vera+verb)/2;
-    if(writeFile.is_open()){
-        writeFile<<"y and x:"<<to_string(y)<<" "<<to_string(x)<<"\n";
-        // writeFile.close();
-    }
+
     bool found = false;
-    for(int i = x-3;i<=x+3;i++){
-        for(int j = y-3;j<=y+3;j++){
+    for(int i = x-5;i<=x+5;i++){
+        for(int j = y-5;j<=y+5;j++){
             cout<<j<<" "<<i<<endl;
             cout.flush();
             cin>>response;
             if(writeFile.is_open()){
                 writeFile<<"try:"<<to_string(j)<<" "<<to_string(i)<<" "<<response<<"\n";
-                // writeFile.close();
             }
             if(response=="CENTER"){
                 found = true;
@@ -148,18 +144,34 @@ bool set2(){
     else{
         return false;
     }
+    return true;
 }
 
 int main()
 {
     int t, a, b;
+    // for(int i = 0;i<3;i++){
     cin>>t;
     cin>>a>>b;
+    if(writeFile.is_open()){
+        writeFile<<"tests:"<<to_string(t)<<"\n";
+        // writeFile.close();
+    }   
     while(t--){
         bool result = set2();
+        if(writeFile.is_open()){
+            writeFile<<"result:"<<to_string(result)<<"\n";
+            // writeFile.close();
+        }   
         if(!result){
             return 0;
         }
     }
+    cin>>t;
+    if(writeFile.is_open()){
+        writeFile<<"next:"<<to_string(t)<<"\n";
+        // writeFile.close();
+    }   
+    // }
     return 0;
 }

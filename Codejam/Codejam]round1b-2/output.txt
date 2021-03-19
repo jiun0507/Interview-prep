@@ -1,36 +1,152 @@
-Horizontal: -999999945 response: HIT
-Horizontal: -999999973 response: HIT
-Horizontal: -999999987 response: HIT
-Horizontal: -999999994 response: HIT
+tests:2
+Horizontal: -500000000 response: HIT
+Horizontal: -750000000 response: HIT
+Horizontal: -875000000 response: HIT
+Horizontal: -937500000 response: HIT
+Horizontal: -968750000 response: HIT
+Horizontal: -984375000 response: HIT
+Horizontal: -992187500 response: HIT
+Horizontal: -996093750 response: HIT
+Horizontal: -998046875 response: HIT
+Horizontal: -999023438 response: HIT
+Horizontal: -999511719 response: HIT
+Horizontal: -999755860 response: HIT
+Horizontal: -999877930 response: HIT
+Horizontal: -999938965 response: HIT
+Horizontal: -999969483 response: HIT
+Horizontal: -999984742 response: HIT
+Horizontal: -999992371 response: HIT
+Horizontal: -999996186 response: HIT
+Horizontal: -999998093 response: HIT
+Horizontal: -999999047 response: HIT
+Horizontal: -999999524 response: HIT
+Horizontal: -999999762 response: HIT
+Horizontal: -999999881 response: HIT
+Horizontal: -999999941 response: HIT
+Horizontal: -999999971 response: HIT
+Horizontal: -999999986 response: HIT
+Horizontal: -999999993 response: HIT
 Horizontal: -999999997 response: MISS
 Horizontal: -999999995 response: HIT
 Horizontal: -999999996 response: MISS
 ans: -999999995
-Horizontal: 999999945 response: HIT
-Horizontal: 999999973 response: HIT
-Horizontal: 999999987 response: HIT
-Horizontal: 999999994 response: HIT
+Horizontal: 500000000 response: HIT
+Horizontal: 750000000 response: HIT
+Horizontal: 875000000 response: HIT
+Horizontal: 937500000 response: HIT
+Horizontal: 968750000 response: HIT
+Horizontal: 984375000 response: HIT
+Horizontal: 992187500 response: HIT
+Horizontal: 996093750 response: HIT
+Horizontal: 998046875 response: HIT
+Horizontal: 999023438 response: HIT
+Horizontal: 999511719 response: HIT
+Horizontal: 999755860 response: HIT
+Horizontal: 999877930 response: HIT
+Horizontal: 999938965 response: HIT
+Horizontal: 999969483 response: HIT
+Horizontal: 999984742 response: HIT
+Horizontal: 999992371 response: HIT
+Horizontal: 999996186 response: HIT
+Horizontal: 999998093 response: HIT
+Horizontal: 999999047 response: HIT
+Horizontal: 999999524 response: HIT
+Horizontal: 999999762 response: HIT
+Horizontal: 999999881 response: HIT
+Horizontal: 999999941 response: HIT
+Horizontal: 999999971 response: HIT
+Horizontal: 999999986 response: HIT
+Horizontal: 999999993 response: HIT
 Horizontal: 999999997 response: MISS
 Horizontal: 999999995 response: HIT
 Horizontal: 999999996 response: MISS
-ans: 999999996
-Vertical:-999999945 response: HIT
-Vertical:-999999973 response: HIT
-Vertical:-999999987 response: HIT
-Vertical:-999999994 response: HIT
+ans: 999999995
+Vertical:-500000000 response: HIT
+Vertical:-750000000 response: HIT
+Vertical:-875000000 response: HIT
+Vertical:-937500000 response: HIT
+Vertical:-968750000 response: HIT
+Vertical:-984375000 response: HIT
+Vertical:-992187500 response: HIT
+Vertical:-996093750 response: HIT
+Vertical:-998046875 response: HIT
+Vertical:-999023438 response: HIT
+Vertical:-999511719 response: HIT
+Vertical:-999755860 response: HIT
+Vertical:-999877930 response: HIT
+Vertical:-999938965 response: HIT
+Vertical:-999969483 response: HIT
+Vertical:-999984742 response: HIT
+Vertical:-999992371 response: HIT
+Vertical:-999996186 response: HIT
+Vertical:-999998093 response: HIT
+Vertical:-999999047 response: HIT
+Vertical:-999999524 response: HIT
+Vertical:-999999762 response: HIT
+Vertical:-999999881 response: HIT
+Vertical:-999999941 response: HIT
+Vertical:-999999971 response: HIT
+Vertical:-999999986 response: HIT
+Vertical:-999999993 response: HIT
 Vertical:-999999997 response: MISS
 Vertical:-999999995 response: HIT
 Vertical:-999999996 response: MISS
 ans:-999999995
-Vertical:999999945 response: HIT
-Vertical:999999973 response: HIT
-Vertical:999999987 response: HIT
-Vertical:999999994 response: HIT
+Vertical:500000000 response: HIT
+Vertical:750000000 response: HIT
+Vertical:875000000 response: HIT
+Vertical:937500000 response: HIT
+Vertical:968750000 response: HIT
+Vertical:984375000 response: HIT
+Vertical:992187500 response: HIT
+Vertical:996093750 response: HIT
+Vertical:998046875 response: HIT
+Vertical:999023438 response: HIT
+Vertical:999511719 response: HIT
+Vertical:999755860 response: HIT
+Vertical:999877930 response: HIT
+Vertical:999938965 response: HIT
+Vertical:999969483 response: HIT
+Vertical:999984742 response: HIT
+Vertical:999992371 response: HIT
+Vertical:999996186 response: HIT
+Vertical:999998093 response: HIT
+Vertical:999999047 response: HIT
+Vertical:999999524 response: HIT
+Vertical:999999762 response: HIT
+Vertical:999999881 response: HIT
+Vertical:999999941 response: HIT
+Vertical:999999971 response: HIT
+Vertical:999999986 response: HIT
+Vertical:999999993 response: HIT
 Vertical:999999997 response: MISS
 Vertical:999999995 response: HIT
 Vertical:999999996 response: MISS
-ans:999999996
-y and x:0 0
+ans:999999995
+try:-5 -5 HIT
+try:-4 -5 HIT
+try:-3 -5 HIT
+try:-2 -5 HIT
+try:-1 -5 HIT
+try:0 -5 HIT
+try:1 -5 HIT
+try:2 -5 HIT
+try:3 -5 HIT
+try:4 -5 HIT
+try:5 -5 HIT
+try:-5 -4 HIT
+try:-4 -4 HIT
+try:-3 -4 HIT
+try:-2 -4 HIT
+try:-1 -4 HIT
+try:0 -4 HIT
+try:1 -4 HIT
+try:2 -4 HIT
+try:3 -4 HIT
+try:4 -4 HIT
+try:5 -4 HIT
+try:-5 -3 HIT
+try:-4 -3 HIT
 try:-3 -3 HIT
 try:-2 -3 HIT
 try:-1 -3 HIT
@@ -38,6 +154,10 @@ try:0 -3 HIT
 try:1 -3 HIT
 try:2 -3 HIT
 try:3 -3 HIT
+try:4 -3 HIT
+try:5 -3 HIT
+try:-5 -2 HIT
+try:-4 -2 HIT
 try:-3 -2 HIT
 try:-2 -2 HIT
 try:-1 -2 HIT
@@ -45,6 +165,10 @@ try:0 -2 HIT
 try:1 -2 HIT
 try:2 -2 HIT
 try:3 -2 HIT
+try:4 -2 HIT
+try:5 -2 HIT
+try:-5 -1 HIT
+try:-4 -1 HIT
 try:-3 -1 HIT
 try:-2 -1 HIT
 try:-1 -1 HIT
@@ -52,58 +176,100 @@ try:0 -1 HIT
 try:1 -1 HIT
 try:2 -1 HIT
 try:3 -1 HIT
+try:4 -1 HIT
+try:5 -1 HIT
+try:-5 0 HIT
+try:-4 0 HIT
 try:-3 0 HIT
 try:-2 0 HIT
 try:-1 0 HIT
 try:0 0 CENTER
-Horizontal: -999999945 response: HIT
-Horizontal: -999999973 response: HIT
-Horizontal: -999999987 response: HIT
-Horizontal: -999999994 response: HIT
+result:1
+Horizontal: -500000000 response: HIT
+Horizontal: -750000000 response: HIT
+Horizontal: -875000000 response: HIT
+Horizontal: -937500000 response: HIT
+Horizontal: -968750000 response: HIT
+Horizontal: -984375000 response: HIT
+Horizontal: -992187500 response: HIT
+Horizontal: -996093750 response: HIT
+Horizontal: -998046875 response: HIT
+Horizontal: -999023438 response: HIT
+Horizontal: -999511719 response: HIT
+Horizontal: -999755860 response: HIT
+Horizontal: -999877930 response: HIT
+Horizontal: -999938965 response: HIT
+Horizontal: -999969483 response: HIT
+Horizontal: -999984742 response: HIT
+Horizontal: -999992371 response: HIT
+Horizontal: -999996186 response: HIT
+Horizontal: -999998093 response: HIT
+Horizontal: -999999047 response: HIT
+Horizontal: -999999524 response: HIT
+Horizontal: -999999762 response: HIT
+Horizontal: -999999881 response: HIT
+Horizontal: -999999941 response: HIT
+Horizontal: -999999971 response: HIT
+Horizontal: -999999986 response: HIT
+Horizontal: -999999993 response: HIT
 Horizontal: -999999997 response: HIT
 Horizontal: -999999999 response: HIT
 Horizontal: -1000000000 response: MISS
 ans: -999999999
-Horizontal: 999999945 response: HIT
-Horizontal: 999999973 response: HIT
-Horizontal: 999999987 response: HIT
-Horizontal: 999999994 response: MISS
-Horizontal: 999999990 response: MISS
-Horizontal: 999999988 response: HIT
+Horizontal: 500000000 response: HIT
+Horizontal: 750000000 response: HIT
+Horizontal: 875000000 response: HIT
+Horizontal: 937500000 response: HIT
+Horizontal: 968750000 response: HIT
+Horizontal: 984375000 response: HIT
+Horizontal: 992187500 response: HIT
+Horizontal: 996093750 response: HIT
+Horizontal: 998046875 response: HIT
+Horizontal: 999023438 response: HIT
+Horizontal: 999511719 response: HIT
+Horizontal: 999755860 response: HIT
+Horizontal: 999877930 response: HIT
+Horizontal: 999938965 response: HIT
+Horizontal: 999969483 response: HIT
+Horizontal: 999984742 response: HIT
+Horizontal: 999992371 response: HIT
+Horizontal: 999996186 response: HIT
+Horizontal: 999998093 response: HIT
+Horizontal: 999999047 response: HIT
+Horizontal: 999999524 response: HIT
+Horizontal: 999999762 response: HIT
+Horizontal: 999999881 response: HIT
+Horizontal: 999999941 response: HIT
+Horizontal: 999999971 response: HIT
+Horizontal: 999999986 response: HIT
+Horizontal: 999999993 response: MISS
 Horizontal: 999999989 response: HIT
-ans: 999999990
-Vertical:-999999945 response: HIT
-Vertical:-999999973 response: HIT
-Vertical:-999999987 response: HIT
-Vertical:-999999994 response: MISS
-Vertical:-999999990 response: MISS
-Vertical:-999999988 response: HIT
-Vertical:-999999989 response: HIT
-ans:-999999989
-Vertical:999999945 response: HIT
-Vertical:999999973 response: HIT
-Vertical:999999987 response: HIT
-Vertical:999999994 response: HIT
-Vertical:999999997 response: HIT
-Vertical:999999999 response: HIT
-Vertical:1000000000 response: MISS
-ans:1000000000
-y and x:5 -4
-try:2 -7 HIT
-try:3 -7 HIT
-try:4 -7 HIT
-try:5 -7 HIT
-try:6 -7 HIT
-try:7 -7 HIT
-try:8 -7 HIT
-try:2 -6 HIT
-try:3 -6 HIT
-try:4 -6 HIT
-try:5 -6 HIT
-try:6 -6 HIT
-try:7 -6 HIT
-try:8 -6 HIT
-try:2 -5 HIT
-try:3 -5 HIT
-try:4 -5 HIT
-try:5 -5 CENTER
+Horizontal: 999999991 response: MISS
+Horizontal: 999999990 response: MISS
+ans: 999999989
+Vertical:-500000000 response: HIT
+Vertical:-750000000 response: HIT
+Vertical:-875000000 response: HIT
+Vertical:-937500000 response: HIT
+Vertical:-968750000 response: HIT
+Vertical:-984375000 response: HIT
+Vertical:-992187500 response: HIT
+Vertical:-996093750 response: HIT
+Vertical:-998046875 response: HIT
+Vertical:-999023438 response: HIT
+Vertical:-999511719 response: HIT
+Vertical:-999755860 response: HIT
+Vertical:-999877930 response: HIT
+Vertical:-999938965 response: HIT
+Vertical:-999969483 response: HIT
+Vertical:-999984742 response: HIT
+Vertical:-999992371 response: HIT
+Vertical:-999996186 response: HIT
+Vertical:-999998093 response: HIT
+Vertical:-999999047 response: HIT
+Vertical:-999999524 response: HIT
+Vertical:-999999762 response: HIT
+Vertical:-999999881 response: HIT
+Vertical:-999999941 response: HIT
+Vertical:-999999971 response: HIT
+Vertical:-9
