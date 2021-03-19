@@ -7,7 +7,7 @@
 
 using namespace std;
 
-bool dp[20000][160]; //index, has L, index-2 vowel or consonant, index-1 vowel or consonant
+bool dp[81][81][81][81];
 int n;
 int woods[16];
 
@@ -21,47 +21,30 @@ int main()
         cin>>woods[i];
         total += woods[i];
     }
-    memset(dp, false, sizeof(dp));
-    dp[0][0] = true;
-    int full = 0;
+    dp[0][0][0][0] = true;
     for(int i = 0;i<n;i++){
-        full |= 1<<i;
-    }
-    cout<<full<<"\n";
-    for(int i = 0;i<full;i++){
-        for(int j = 0;j<n;j++){
-            if((i&(1<<j))!=0) continue;
-            for(int k = 0;k<=total;k++){
-                if(dp[i][k]){
-                    int next = i|(1<<j);
-                    dp[next][k] = true;
-                    dp[next][k+woods[j]] = true;
-                    // cout<<next<<" "<<k<<"\n";
-                    // cout<<next<<" "<<k+woods[j]<<"\n";
+        for(int a = total/2;a>=0;a--){
+            for(int b = total/2;b>=0;b--){
+                for(int c = total/2;c>=0;c--){
+                    for(int d = total/2;d>=0;d--){
+                        if(dp[a][b][c][d]==true){
+                            if(a+woods[i]<=80) dp[a+woods[i]][b][c][d] = 1;
+                            if(b+woods[i]<=80)dp[a][b+woods[i]][c][d] = 1;
+                            
+                            if(c+woods[i]<=80)dp[a][b][c+woods[i]][d] = 1;
+                            if(d+woods[i]<=80)dp[a][b][c][d+woods[i]] = 1;
+                        }
+                    }
                 }
             }
         }
     }
     int mx = -1;
-    for(int i = 3;i<full-2;i++){
-        int one_side = -1;
-        for(int j = 2;j<total;j+=2){
-            if(dp[i][j]&&dp[i][j/2]){
-                one_side = j/2;
+    for(int i = 1;i<=total/2;i++){
+        for(int j = 1;j<=total/2;j++){
+            if(dp[i][i][j][j]==true||dp[j][j][i][i]){
+                mx = max(mx, i*j);
             }
-        }
-        if(one_side==-1) continue;
-        int other_side = -1;
-        int composite = full - i;
-        for(int j = 2;j<total;j+=2){
-            if(dp[composite][j]&&dp[composite][j/2]){
-                other_side = j/2;
-            }
-        }
-        if(other_side==-1) continue;
-        if(mx<one_side*other_side){
-            cout<<one_side<<" "<<other_side<<"\n";
-            mx= one_side*other_side;
         }
     }
     cout<<mx<<"\n";
