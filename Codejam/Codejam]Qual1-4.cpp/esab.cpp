@@ -30,18 +30,16 @@ string set2(){
     string a[2] = {"", ""};
     string b[2] = {"", ""};
     for(int i =0;i<10;i++){
-        cout<<i<<"\n";
+        // cout<<i<<"\n";
         string buf;
         cin>>buf;
         a[0] += buf;
-    }
-    string opposite = "";
-    for(int i = 0;i<10;i++){
         a[1] += to_string('1'-a[0][i]);
     }
-    for(int i = 0;i<12;i++){
+    for(int i = 0;i<14;i++){
         string check= "";
-        for(int j =0;j<10;j++){
+        for(int j =1;j<=10;j++){
+            //cout<<j<<"\n";
             string buf;
             cin>>buf;
             check += buf;
@@ -54,18 +52,43 @@ string set2(){
         b[1] = a[1];
     }
     else{
-        string opposite = "";
         for(int i = 0;i<10;i++){
             b[1] += to_string('1'-b[0][i]);
         }
     }
+    reverse(b[0].begin(), b[0].end());
+    reverse(b[1].begin(), b[1].end());
+
+    for(int i = 0;i<2;i++){
+        cout<<"A"<<a[i]<<"\n";
+        cout<<"B"<<b[i]<<"\n";
+    }
+    int left_a = 0;
+    int left_b = 0;
+    int right_a = 0;
+    int right_b = 0;
+
+    cout<<1<<"\n";
+    char response;
+    cin>>response;
+    if(a[0][0]==response){
+        left_a = 1;
+    } else if(a[1][0]==response){
+        left_a = 2;
+    }
+    if(b[0][0]==response){
+        left_b = 1;
+    } else if(b[1][0]==response){
+        left_b = 2;
+    }
 
 
+    return "1";
 }
 
 int main()
 {
-    int t, a, b;
+    int t, b;
     // for(int i = 0;i<3;i++){
     cin>>t>>b;
     while(t--){
