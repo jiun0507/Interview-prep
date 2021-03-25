@@ -1,2 +1,1 @@
-<<k<<"\n";
-                    // cout<<next<<" 
+        cout<<cur<<"\n";
