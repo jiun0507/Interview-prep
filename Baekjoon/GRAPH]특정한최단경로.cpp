@@ -1,4 +1,4 @@
-// 2056 작업
+// 1504 특정한 최단 경로
 // baekjoon
 
 #include <stdio.h>
