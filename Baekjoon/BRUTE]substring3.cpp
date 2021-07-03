@@ -51,17 +51,37 @@ int main(void){
     cin>>s>>p;
     vector<int> pi = getpi(p);
 
-    int j = 0;
     int len = s.size();
-    for(int i =0;i<len;i++){
-        while(j>0 && s[i]!=p[j]){
-            j = pi[j-1];
-        }
-        if(s[i]==p[j]){
-            j++;
-            if(j==p.size()){
-                cout<<1<<"\n";
+    int m = p.size();
+    // int j = 0;
+    // for(int i =0;i<len;i++){
+    //     while(j>0 && s[i]!=p[j]){
+    //         j = pi[j-1];
+    //     }
+    //     if(s[i]==p[j]){
+    //         j++;
+    //         if(j==p.size()){
+    //             cout<<1<<"\n";
+    //             return 0;
+    //         }
+    //     }
+    // }
+    int begin = 1;
+    int match = 0;
+    while(begin+match<len){
+        if(s[begin+match]==p[match]){
+            match++;
+            s[begin+match-1] = match;
+            if(match==m){
+                cout<<"1\n";
                 return 0;
+            }
+        } else{
+            if(match==0){
+                begin++;
+            } else{
+                begin += match - pi[match-1];
+                match = pi[match-1];
             }
         }
     }

@@ -4,6 +4,10 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+//kmp와 preprocessing의 time complexity
+
+// O(N)
+
 vector<int> getpi(string &p){
     int len = p.size();
     vector<int> pi(len);
@@ -50,6 +54,7 @@ int main(void){
             }
         }
     }
+    cout<<"0\n";
 
 
     return 0;
