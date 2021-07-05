@@ -15,18 +15,18 @@ char nth_letter(int n)
     return "abcdefghijklmnopqrstuvwxyz"[n];
 }
 
-bool dfs(int cur, string &topo){
+string dfs(int cur){
     visited[cur] = 1;
+    string ret;
     for(int i = 0;i<26; i++){
         if(adjacent[cur][i] && !visited[i]){
-            if(!dfs(i, topo)){
-                return false;
-            }
+            string sub = dfs(i);
+            if(sub=="") return "";
+            ret += sub;
         } 
-
     }
-    topo += nth_letter(cur);
-    return true;
+    ret += nth_letter(cur);
+    return ret;
 }
 
 int main() {
@@ -39,7 +39,6 @@ int main() {
             string input;
             cin>>input;
             words.push_back(input);
-            cout<<input<<endl;
         }
         visited = vector<int>(26, 0);
         adjacent = vector<vector<int>> (26, vector<int>(26, 0));
@@ -47,25 +46,29 @@ int main() {
             int first = second - 1;
             for(int k = 0;k<words[first].size();k++){
                 if(words[first][k] != words[second][k]){
-                    if(adjacent[words[first][k]-'a'][words[second][k]-'a']){
-                        cout<<"INVALID HYPOTHESIS"<<endl;
-                        return 0;
-                    }
-                    adjacent[words[second][k]-'a'][words[first][k]-'a'] = 1;
+                    adjacent[words[first][k]-'a'][words[second][k]-'a'] = 1;
                     break;
                 }
             }
         }
         string ans = "";
+        string latter = "";
         for(int i = 0;i<26;i++){
             if(!visited[i]){
-                if(!dfs(i, ans)){
-                    cout<<"INVALID_HYPOTHESIS\n";
-                    break;
+                string ret = dfs(i);
+                if(ret.size()==1){
+                    latter += ret;
+                } 
+                else if(ret==""){
+                    cout<<"INVALID HYPOTHESIS"<<"\n";
+                } else{
+                    ans += ret;
                 }
                 
             }
         }
+        reverse(ans.begin(), ans.end());
+        ans += latter;
         cout<<ans<<"\n";
     }
 

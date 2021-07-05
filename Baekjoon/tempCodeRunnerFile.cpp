@@ -1,2 +1,2 @@
- ans.end());
-    cout<<ans<<"\n";
+
+        cin>>m;
