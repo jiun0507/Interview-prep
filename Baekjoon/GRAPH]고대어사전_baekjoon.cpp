@@ -15,18 +15,17 @@ char nth_letter(int n)
     return "abcdefghijklmnopqrstuvwxyz"[n];
 }
 
-string dfs(int cur){
+bool dfs(int cur, string &topo){
     visited[cur] = 1;
-    string ret;
     for(int i = 0;i<26; i++){
         if(adjacent[cur][i] && !visited[i]){
-            string sub = dfs(i);
-            if(sub=="") return "";
-            ret += sub;
+            if(!dfs(i, topo)){
+                return false;
+            }
         } 
     }
-    ret += nth_letter(cur);
-    return ret;
+    topo += nth_letter(cur);
+    return true;
 }
 
 int main() {
@@ -52,23 +51,16 @@ int main() {
             }
         }
         string ans = "";
-        string latter = "";
         for(int i = 0;i<26;i++){
             if(!visited[i]){
-                string ret = dfs(i);
-                if(ret.size()==1){
-                    latter += ret;
-                } 
-                else if(ret==""){
-                    cout<<"INVALID HYPOTHESIS"<<"\n";
-                } else{
-                    ans += ret;
+                if(!dfs(i, ans)){
+                    cout<<"INVALID_HYPOTHESIS\n";
+                    break;
                 }
                 
             }
         }
         reverse(ans.begin(), ans.end());
-        ans += latter;
         cout<<ans<<"\n";
     }
 
