@@ -1,4 +1,10 @@
-                    dp[j][j+i] = true;
-                    if(ret.size()<i+1){
-                        ret = s.substr(j, i+1);
-                    }
+d()){
+            if(maximum < (it->first - returns[i].first)){
+                ans.clear();
+                ans.push_back(make_pair(it->second, i));
+            } else if(maximum == it->first - returns[i].first){
+                ans.push_back(make_pair(it->second, i));
+            } else{
+                break;
+            }
+        }
